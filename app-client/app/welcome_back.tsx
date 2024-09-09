@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Image, TouchableOpacity, View, Text, TextInput, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
-export default function Index() {
+export default function Login() {
   const router = useRouter();
 
-  const [name, setName] = useState('');
+  // State for form input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
     <View style={styles.container}>
@@ -19,18 +18,8 @@ export default function Index() {
       />
 
       <Text style={styles.title}>KRUNCH</Text>
-      <Text style={styles.registerText}>REGISTER</Text>
-      <Text style={styles.subheading}>Create your new Account</Text>
-      <View>
-      <View style={styles.inputContainer}>
-        <TextInput 
-          style={styles.input}
-          placeholder="Name"
-          value={name}
-          onChangeText={setName}
-        />
-      </View>
-      
+      <Text style={styles.welcomeText}>WELCOME BACK</Text>
+      <Text style={styles.subheading}>Login to your account</Text>
       <View style={styles.inputContainer}>
         <TextInput 
           style={styles.input}
@@ -41,7 +30,7 @@ export default function Index() {
         />
       </View>
 
-     
+      {/* Password Input */}
       <View style={styles.inputContainer}>
         <TextInput 
           style={styles.input}
@@ -51,26 +40,21 @@ export default function Index() {
           onChangeText={setPassword}
         />
       </View>
-      
-      <View style={styles.inputContainer}>
-        <TextInput 
-          style={styles.input}
-          placeholder="Confirm Password"
-          secureTextEntry={true}
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
-        />
-      </View>
-      </View>
-      <View>
-      <TouchableOpacity style={styles.signupButton}>
-        <Text style={styles.signupButtonText}>SIGNUP</Text>
+
+     
+      <TouchableOpacity onPress={() => router.push('/')}>
+        <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => router.push('/welcome_back')}>
-        <Text style={styles.loginText}>Already have an account? Login</Text>
+      
+      <TouchableOpacity style={styles.loginButton}>
+        <Text style={styles.loginButtonText}>LOGIN</Text>
       </TouchableOpacity>
-      </View>
+
+    
+      <TouchableOpacity onPress={() => router.push('/register')}>
+        <Text style={styles.registerText}>Don't have an account? <Text style={styles.registerLink}>Register</Text></Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -87,6 +71,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
+    position: 'absolute',
     top: 50,
     left: 10,
   },
@@ -94,27 +79,28 @@ const styles = StyleSheet.create({
     fontFamily: 'Bebas',
     color: '#1BCF5A',
     fontSize: 50,
+    position: 'absolute',
     top: 70,
     left: 120,
   },
-  registerText: {
+  welcomeText: {
     fontFamily: 'Bebas',
     color: '#003400',
     fontSize: 40,
+    position: 'absolute',
     top: 200,
   },
   subheading: {
     fontFamily: 'Regular',
     color: '#003400',
     fontSize: 20,
+    position: 'absolute',
     top: 250,
   },
   inputContainer: {
-    marginTop: 10,
-    top: 50,
-    backgroundColor: '#E3E9E5',
+    backgroundColor: '#E6F2ED',
     borderRadius: 10,
-    width: '80%',
+    width: '100%',
     padding: 10,
     marginVertical: 10,
     alignItems: 'center',
@@ -125,28 +111,31 @@ const styles = StyleSheet.create({
     height: 50,
     fontSize: 18,
     paddingHorizontal: 10,
-    color: '#003400',
   },
-  signupButton: {
-    backgroundColor: '#1BCF5A',
-    paddingVertical: 15,
-    width: "80%",
-    paddingHorizontal: 40,
-    borderRadius: 30,
-    top: 670,
-    alignContent: 'center',
-    opacity: 2,
-  },
-  signupButtonText: {
-    fontSize: 20,
-    color: 'white',
-    justifyContent: 'center',
-    alignContent: 'center',
-  },
-  loginText: {
+  forgotPasswordText: {
     fontSize: 14,
     color: '#003400',
-    bottom: -150,
+    marginTop: 10,
+    textDecorationLine: 'underline',
+  },
+  loginButton: {
+    backgroundColor: '#1BCF5A',
+    borderRadius: 10,
+    width: '100%',
+    padding: 15,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  loginButtonText: {
+    fontSize: 18,
+    color: 'white',
+  },
+  registerText: {
+    fontSize: 14,
+    color: '#003400',
+    marginTop: 20,
+  },
+  registerLink: {
     textDecorationLine: 'underline',
   },
 });
