@@ -38,71 +38,73 @@ export default function Index() {
             justifyContent: "center",
             alignItems: "center",
           }}>
-          <Image 
-            source={require('@/assets/images/kiit-logo.png')}
-            style={{
-              width: 100,
-              height: 100,
-              position: 'absolute',
-              top: 50,
-              left: 10,
-            }}
-          />
-          <Text 
-            style={{
-              fontFamily: "Bebas",
-              color: "#1BCF5A",
-              fontSize: 50,
-              position: 'absolute',
-              top: 70,
-              left: 120,
-            }}>KRUNCH</Text>
+          <View>
+            <View>
+              <Image 
+                source={require('@/assets/images/kiit-logo.png')}
+                style={{
+                  width: 100,
+                  height: 100,
+                  position: 'absolute',
+                  top: 50,
+                  left: 10,
+                }}
+              />
+              <Text 
+                style={{
+                  fontFamily: "Bebas",
+                  color: "#1BCF5A",
+                  fontSize: 50,
+                  position: 'absolute',
+                  top: 70,
+                  left: 120,
+                }}>KRUNCH</Text>
+            </View>
+            <View>
+              <View>
+                <Text
+                style={{
+                  fontFamily: "Bebas",
+                  color: "#fff",
+                  fontSize: 40,
+                  marginTop: '140%',
+                  marginLeft: '-25%',
+                }}>WELCOME TO</Text>
+                <Text 
+                style={{
+                  fontFamily: "Bebas",
+                  color: "#1BCF5A",
+                  fontSize: 50,
+                  marginLeft: '-28%',
+                }}>KRUNCH  </Text>
+              </View>
 
-            <Text
-            style={{
-              fontFamily: "Bebas",
-              color: "#fff",
-              fontSize: 40,
-              position: 'absolute',
-              top: 570,
-              left: 80,
-            }}>WELCOME TO</Text>
-            <Text 
-            style={{
-              fontFamily: "Bebas",
-              color: "#1BCF5A",
-              fontSize: 50,
-              position: 'absolute',
-              top: 600,
-              left: 80,
-            }}>KRUNCH  </Text>
-
-          <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
-            <Text style={styles.buttonText}>GET STARTED →</Text>
-          </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
+                <Text style={styles.buttonText}>GET STARTED →</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
       </ImageBackground>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#1BCF5A',
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 30,
-    position: 'absolute',
+    marginTop: '25%',
     alignContent: 'center',
     bottom: 70,
     opacity: 2,
-    alignItems: 'center',
   },
   buttonText: {
     fontFamily: "Bebas",
     color: '#FFFFFF',
     fontSize: 28,
-    alignContent: 'center',
+    
   },
 });
 

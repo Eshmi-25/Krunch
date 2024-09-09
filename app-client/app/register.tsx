@@ -18,16 +18,9 @@ export default function Index() {
         style={styles.logo}
       />
 
-      
       <Text style={styles.title}>KRUNCH</Text>
-
-     
       <Text style={styles.registerText}>REGISTER</Text>
-
- 
       <Text style={styles.subheading}>Create your new Account</Text>
-
-     
       <View style={styles.inputContainer}>
         <TextInput 
           style={styles.input}
@@ -37,7 +30,6 @@ export default function Index() {
         />
       </View>
 
-   
       <View style={styles.inputContainer}>
         <TextInput 
           style={styles.input}
