@@ -22,10 +22,11 @@ export default function RootLayout() {
         animation: "slide_from_right", 
       }}
     >
-      
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="home_page" options={{ headerShown: false, }} />
+       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="home_page" options={{ headerShown: false }} />
       <Stack.Screen name="register" options={{ headerShown: false }} />
+      <Stack.Screen name="welcome_back" options={{ headerShown: false }} />
+      <Stack.Screen name="+not-found" />
 
     </Stack>
   );

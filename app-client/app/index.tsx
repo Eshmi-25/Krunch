@@ -67,15 +67,15 @@ export default function Index() {
                   fontFamily: "Bebas",
                   color: "#fff",
                   fontSize: 40,
-                  marginTop: '140%',
-                  marginLeft: '-25%',
+                  marginTop: '160%',
+                  marginLeft: '10%',
                 }}>WELCOME TO</Text>
                 <Text 
                 style={{
                   fontFamily: "Bebas",
                   color: "#1BCF5A",
                   fontSize: 50,
-                  marginLeft: '-28%',
+                  marginLeft: '10%',
                 }}>KRUNCH  </Text>
               </View>
 
@@ -95,13 +95,13 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 30,
-    marginTop: '25%',
     alignContent: 'center',
-    bottom: 70,
+    marginBottom:'10%',
     opacity: 2,
   },
   buttonText: {
     fontFamily: "Bebas",
+    alignItems: 'center',
     color: '#FFFFFF',
     fontSize: 28,
     
