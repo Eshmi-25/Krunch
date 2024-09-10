@@ -87,27 +87,27 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
-    top: 50,
-    left: 10,
+    marginTop: '-20%',
+    marginLeft: '-65%',
   },
   title: {
-    fontFamily: 'Bebas',
-    color: '#1BCF5A',
+    fontFamily: "Bebas",
+    color: "#1BCF5A",
     fontSize: 50,
-    top: 70,
-    left: 120,
+    marginTop: '-20%',
+    marginLeft: '5%',
   },
   registerText: {
     fontFamily: 'Bebas',
     color: '#003400',
     fontSize: 40,
-    top: 200,
+    marginTop: '20%',
   },
   subheading: {
     fontFamily: 'Regular',
     color: '#003400',
     fontSize: 20,
-    top: 250,
+    marginTop: '2%',
   },
   inputContainer: {
     marginTop: 10,
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   loginText: {
     fontSize: 14,
     color: '#003400',
-    bottom: -150,
+    
     textDecorationLine: 'underline',
   },
 });

@@ -39,15 +39,15 @@ export default function Index() {
             alignItems: "center",
           }}>
           <View>
-            <View>
+            <View >
               <Image 
                 source={require('@/assets/images/kiit-logo.png')}
                 style={{
                   width: 100,
                   height: 100,
-                  position: 'absolute',
-                  top: 50,
-                  left: 10,
+                  marginTop: '0%',
+                  marginLeft: '5%',
+                  
                 }}
               />
               <Text 
@@ -55,9 +55,8 @@ export default function Index() {
                   fontFamily: "Bebas",
                   color: "#1BCF5A",
                   fontSize: 50,
-                  position: 'absolute',
-                  top: 70,
-                  left: 120,
+                  marginTop: '-20%',
+                  marginLeft: '35%',
                 }}>KRUNCH</Text>
             </View>
             <View>
@@ -67,7 +66,7 @@ export default function Index() {
                   fontFamily: "Bebas",
                   color: "#fff",
                   fontSize: 40,
-                  marginTop: '160%',
+                  marginTop: '110%',
                   marginLeft: '10%',
                 }}>WELCOME TO</Text>
                 <Text 
@@ -76,6 +75,7 @@ export default function Index() {
                   color: "#1BCF5A",
                   fontSize: 50,
                   marginLeft: '10%',
+                  marginBottom: '2%',
                 }}>KRUNCH  </Text>
               </View>
 
@@ -96,7 +96,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     borderRadius: 30,
     alignContent: 'center',
-    marginBottom:'10%',
+    marginBottom:'-10%',
+    marginLeft: '10%',
+    marginRight: '10%',
     opacity: 2,
   },
   buttonText: {

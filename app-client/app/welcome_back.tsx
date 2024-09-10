@@ -30,7 +30,7 @@ export default function Login() {
         />
       </View>
 
-      {/* Password Input */}
+      
       <View style={styles.inputContainer}>
         <TextInput 
           style={styles.input}
@@ -71,17 +71,18 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
-    position: 'absolute',
-    top: 50,
-    left: 10,
+    marginTop: '-40%',
+    marginLeft: '-65%',
+    marginBottom: '30%',
+
   },
   title: {
-    fontFamily: 'Bebas',
-    color: '#1BCF5A',
+    fontFamily: "Bebas",
+    color: "#1BCF5A",
     fontSize: 50,
-    position: 'absolute',
-    top: 70,
-    left: 120,
+    marginTop: '-50%',
+    marginLeft: '5%',
+    marginBottom: '60%',
   },
   welcomeText: {
     fontFamily: 'Bebas',
@@ -99,6 +100,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     backgroundColor: '#E6F2ED',
+    
     borderRadius: 10,
     width: '100%',
     padding: 10,
@@ -111,6 +113,7 @@ const styles = StyleSheet.create({
     height: 50,
     fontSize: 18,
     paddingHorizontal: 10,
+    
   },
   forgotPasswordText: {
     fontSize: 14,

@@ -10,6 +10,7 @@ export default function Index() {
   };
 
   return (
+   
     <View
       style={{
         flex: 1,
@@ -38,50 +39,54 @@ export default function Index() {
             justifyContent: "center",
             alignItems: "center",
           }}>
-          <Image 
-            source={require('@/assets/images/kiit-logo.png')}
-            style={{
-              width: 100,
-              height: 100,
-              position: 'absolute',
-              top: 50,
-              left: 10,
-            }}
-          />
-          <Text 
-            style={{
-              fontFamily: "Bebas",
-              color: "#1BCF5A",
-              fontSize: 50,
-              position: 'absolute',
-              top: 80,
-              left: 120,
-            }}>KRUNCH</Text>
-
+          <View>
+          <View >
+              <Image 
+                source={require('@/assets/images/kiit-logo.png')}
+                style={{
+                  width: 100,
+                  height: 100,
+                  marginTop: '0%',
+                  marginLeft: '5%',
+                  
+                }}
+              />
+              <Text 
+                style={{
+                  fontFamily: "Bebas",
+                  color: "#1BCF5A",
+                  fontSize: 50,
+                  marginTop: '-20%',
+                  marginLeft: '35%',
+                }}>KRUNCH</Text>
+            </View>
+            <View>
+            <View>
             <Text
             style={{
               fontFamily: "Bebas",
               color: "#fff",
               fontSize: 40,
-              position: 'absolute',
-              top: 570,
-              left: 50,
+              marginTop: '110%',
+              marginLeft: '10%',
             }}>ORDER FROM THE NEAREST </Text>
             <Text 
             style={{
               fontFamily: "Bebas",
               color: "#1BCF5A",
               fontSize: 50,
-              position: 'absolute',
-              top: 600,
-              left: 50,
+              marginLeft: '10%',
+              marginBottom: '2%',
             }}>FOOD COURT </Text>
-
+             </View>
           <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
             <Text style={styles.buttonText}>GET STARTED →</Text>
           </TouchableOpacity>
+          </View>
         </View>
+      </View>
       </ImageBackground>
+      
     </View>
   );
 }
@@ -92,13 +97,15 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 30,
-    position: 'absolute',
     alignContent: 'center',
-    bottom: 70,
+    marginBottom:'10%',
+    marginLeft: '10%',
+    marginRight: '10%',
     opacity: 2,
   },
   buttonText: {
     fontFamily: "Bebas",
+    alignItems: 'center',
     color: '#FFFFFF',
     fontSize: 28,
     
