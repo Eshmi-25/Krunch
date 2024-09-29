@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import kiitlogo from "../../assets/kiitlogo.svg";
 import NavigateLinks from "../../components/NavigateLinks";
 import { IoMdSearch } from "react-icons/io";
 import ItemList from "../../components/ItemList";
+import HeadBanner from "../../components/HeadBanner";
 
 const EditItemAvailability = () => {
   const [fcId, setFcId] = useState(1);
@@ -18,6 +18,7 @@ const EditItemAvailability = () => {
     { id: 5, name: "Noodles", unitPrice: 100, available: true },
     { id: 5, name: "Noodles", unitPrice: 100, available: true },
   ]);
+  const [subtitle, setSubtitle] = useState("Food court: " + fcId);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -28,17 +29,7 @@ const EditItemAvailability = () => {
     <div className="bg-primary max-h-screen min-w-screen flex flex-col p-10 overflow-hidden">
       {/* Fixed Top Header */}
       <div className="flex justify-between mb-2">
-        <div className="flex items-center gap-6">
-          <div className="bg-accentgreen rounded-full p-2">
-            <img src={kiitlogo} alt="kiit" className="h-20 w-20" />
-          </div>
-          <div>
-            <h2 className="text-5xl text-accentgreen font-semibold">
-              Edit Item Availability
-            </h2>
-            <p className="text-accentgreen text-xl">Food court: {fcId}</p>
-          </div>
-        </div>
+        <HeadBanner title="Edit Item Availability" subtitle={subtitle} />
         <NavigateLinks navOption="view orders" navLink="/vieworders" />
       </div>
 

@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import kiitlogo from "../../assets/kiitlogo.svg";
 import OrderDisplayCard from "../../components/OrderDisplayCard";
 import NavigateLinks from "../../components/NavigateLinks";
+import HeadBanner from "../../components/HeadBanner";
 
 const ViewOrders = () => {
   const [fcId, setFcId] = useState(1);
+  const [subtitle, setSubtitle] = useState("Food court: " + fcId);
   const titles = [
     "name",
     "roll no",
@@ -46,17 +47,7 @@ const ViewOrders = () => {
   return (
     <div className="bg-primary min-h-screen min-w-screen flex flex-col p-10">
       <div className="flex justify-between">
-        <div className="flex items-center gap-6">
-          <div className="bg-accentgreen rounded-full p-2">
-            <img src={kiitlogo} alt="kiit" className="h-20 w-20" />
-          </div>
-          <div>
-            <h2 className="text-5xl text-accentgreen font-semibold">
-              Know your orders
-            </h2>
-            <p className="text-accentgreen text-xl">Food court: {fcId}</p>
-          </div>
-        </div>
+        <HeadBanner title="Know Your Orders" subtitle={subtitle} />
         <NavigateLinks navOption="item availability" navLink="/editItemAvailability"/>
       </div>
       <div className="mt-8 px-8 flex flex-col">

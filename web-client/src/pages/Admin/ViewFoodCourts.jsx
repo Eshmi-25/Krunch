@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import kiitlogo from "../../assets/kiitlogo.svg";
 import FoodCourtList from "../../components/FoodCourtList";
 import AdminNavigateLinks from "../../components/AdminNavigateLinks";
+import HeadBanner from "../../components/HeadBanner";
 
 const ViewFoodCourts = () => {
   const [foodCourts, setFoodCourts] = useState([
@@ -21,22 +21,13 @@ const ViewFoodCourts = () => {
   
   const [adminName, setAdminName] = useState("Admin")
   const titles = ["FC No.", "Campus", "Landmark", "Map Link", "Options"];
+  const [subtitle, setSubtitle] = useState("Mr/Ms/Mrs. " + adminName);
 
 
   return (
     <div className="bg-primary min-h-screen min-w-screen flex flex-col p-10">
       <div className="flex justify-between">
-        <div className="flex items-center gap-6">
-          <div className="bg-accentgreen rounded-full p-2">
-            <img src={kiitlogo} alt="kiit" className="h-20 w-20" />
-          </div>
-          <div>
-            <h2 className="text-5xl text-accentgreen font-semibold">
-              All Food Courts
-            </h2>
-            <p className="text-accentgreen text-xl">Mr./Ms./Mrs. {adminName}</p>
-          </div>
-        </div>
+        <HeadBanner title="All Food Courts" subtitle={subtitle}/>
         <AdminNavigateLinks navOption1="add new FC" navLink1="/addNewFoodCourt" navOption2="add new item" navLink2="/addNewItem"/>
       </div>
       <div className="bg-secondary text-accentwhite cabin mt-6 rounded-md py-5">
