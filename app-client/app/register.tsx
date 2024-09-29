@@ -2,13 +2,22 @@ import React, { useState } from 'react';
 import { Image, TouchableOpacity, View, Text, TextInput, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
-export default function Index() {
+export default function Register() {
   const router = useRouter();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  
+  const handleSignup = () => {
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    alert("Registered successfully");
+  };
 
   return (
     <View style={styles.container}>
@@ -63,7 +72,10 @@ export default function Index() {
       </View>
       </View>
       <View>
-      <TouchableOpacity style={styles.signupButton}>
+      <TouchableOpacity 
+        style={styles.signupButton} 
+        onPress={handleSignup}
+      >
         <Text style={styles.signupButtonText}>SIGNUP</Text>
       </TouchableOpacity>
 
@@ -87,7 +99,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
-    marginTop: '-20%',
+    marginTop: '10%',
     marginLeft: '-65%',
   },
   title: {
@@ -109,16 +121,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: '2%',
   },
+  
   inputContainer: {
     marginTop: 10,
-    top: 50,
     backgroundColor: '#E3E9E5',
     borderRadius: 10,
     width: '80%',
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 15,
     marginVertical: 10,
-    alignItems: 'center',
+    elevation: 3,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   input: {
     flex: 1,
@@ -130,23 +144,24 @@ const styles = StyleSheet.create({
   signupButton: {
     backgroundColor: '#1BCF5A',
     paddingVertical: 15,
-    width: "80%",
     paddingHorizontal: 40,
     borderRadius: 30,
-    top: 670,
     alignContent: 'center',
-    opacity: 2,
+    marginBottom:'2%',
+    marginTop:'2%',
+    opacity: 2, 
   },
-  signupButtonText: {
-    fontSize: 20,
+signupButtonText: {
+    fontSize: 30,
     color: 'white',
-    justifyContent: 'center',
-    alignContent: 'center',
-  },
+    fontFamily: 'Bebas',
+    alignContent:'center',
+},
   loginText: {
-    fontSize: 14,
+    fontSize: 16,
     color: '#003400',
-    
     textDecorationLine: 'underline',
+    marginTop: 20,
+  
   },
 });
