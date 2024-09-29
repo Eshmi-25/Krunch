@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
+import { BiHide } from "react-icons/bi";
 
 const FoodCourtList = ({foodCourt}) => {
   return (
@@ -14,10 +15,13 @@ const FoodCourtList = ({foodCourt}) => {
             </a>
         </div>
         <div className='flex items-center justify-center'>
-            <button className="text-xl text-accentwhite rounded-md px-4 py-2 hover:bg-accentgreen">
+            <button className="text-xl text-accentwhite rounded-md px-2 py-2 hover:bg-accentgreen">
             <FaRegEdit />
             </button>
-            <button className="text-2xl text-tertiary rounded-md px-4 py-2 ml-2 hover:bg-accentgreen">
+            <button className="text-xl text-tertiary rounded-md px-2 py-2 hover:bg-accentgreen">
+            <BiHide />
+            </button>
+            <button className="text-2xl text-[#FD6062] rounded-md px-2 py-2 ml-2 hover:bg-accentgreen">
             <MdDeleteOutline />
             </button>
         </div>
