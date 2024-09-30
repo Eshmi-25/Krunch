@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Image, TouchableOpacity, View, Text, TextInput, StyleSheet } from 'react-native';
+import { Image, TouchableOpacity, View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
+import Navbar from '@/components/Navbar';
+import "@/assets/styles/Register.css";
 
 export default function Register() {
   const router = useRouter();
@@ -19,30 +21,33 @@ export default function Register() {
     alert("Registered successfully");
   };
 
-  return (
-    <View style={styles.container}>
-      
-      <Image 
-        source={require('@/assets/images/kiit-logo.png')}
-        style={styles.logo}
-      />
 
-      <Text style={styles.title}>KRUNCH</Text>
-      <Text style={styles.registerText}>REGISTER</Text>
-      <Text style={styles.subheading}>Create your new Account</Text>
-      <View>
-      <View style={styles.inputContainer}>
+  return (
+    <View id='main-container' style={{ padding: 0, margin: 0 }}>
+      <View style={{
+      display: "flex",
+      justifyContent: "flex-start",
+    }}>
+        <Navbar/>
+        </View>
+    <View id="container">
+      <Text id="register-text">REGISTER</Text>
+      <Text id="subheading">Create your new Account</Text>
+      <View style={{
+        display: 'flex',
+        gap: 10,
+        marginTop: 10
+      }}>
+      <View id="input-container">
         <TextInput 
-          style={styles.input}
           placeholder="Name"
           value={name}
           onChangeText={setName}
         />
       </View>
       
-      <View style={styles.inputContainer}>
+      <View id="input-container">
         <TextInput 
-          style={styles.input}
           placeholder="KIIT Email"
           keyboardType="email-address"
           value={email}
@@ -51,9 +56,8 @@ export default function Register() {
       </View>
 
      
-      <View style={styles.inputContainer}>
+      <View id="input-container">
         <TextInput 
-          style={styles.input}
           placeholder="Password"
           secureTextEntry={true}
           value={password}
@@ -61,9 +65,8 @@ export default function Register() {
         />
       </View>
       
-      <View style={styles.inputContainer}>
+      <View id="input-container">
         <TextInput 
-          style={styles.input}
           placeholder="Confirm Password"
           secureTextEntry={true}
           value={confirmPassword}
@@ -72,96 +75,19 @@ export default function Register() {
       </View>
       </View>
       <View>
-      <TouchableOpacity 
-        style={styles.signupButton} 
+      <Pressable 
+        id="signup-button"
         onPress={handleSignup}
       >
-        <Text style={styles.signupButtonText}>SIGNUP</Text>
-      </TouchableOpacity>
+        <Text id="signup-button-text">SIGNUP</Text>
+      </Pressable>
 
-      <TouchableOpacity onPress={() => router.push('/welcome_back')}>
-        <Text style={styles.loginText}>Already have an account? Login</Text>
-      </TouchableOpacity>
+      <Pressable id='nav-label' onPress={() => router.push('/welcome_back')}>
+        <Text>Already have an account?</Text>
+        <Text id="login-text">Login</Text>
+      </Pressable>
       </View>
-    </View>
+      </View>
+      </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#B3D4C3',
-    paddingHorizontal: 20,
-  },
-  logo: {
-    width: 100,
-    height: 100,
-    marginTop: '10%',
-    marginLeft: '-65%',
-  },
-  title: {
-    fontFamily: "Bebas",
-    color: "#1BCF5A",
-    fontSize: 50,
-    marginTop: '-20%',
-    marginLeft: '5%',
-  },
-  registerText: {
-    fontFamily: 'Bebas',
-    color: '#003400',
-    fontSize: 40,
-    marginTop: '20%',
-  },
-  subheading: {
-    fontFamily: 'Regular',
-    color: '#003400',
-    fontSize: 20,
-    marginTop: '2%',
-  },
-  
-  inputContainer: {
-    marginTop: 10,
-    backgroundColor: '#E3E9E5',
-    borderRadius: 10,
-    width: '80%',
-    paddingHorizontal: 10,
-    paddingVertical: 15,
-    marginVertical: 10,
-    elevation: 3,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  input: {
-    flex: 1,
-    height: 50,
-    fontSize: 18,
-    paddingHorizontal: 10,
-    color: '#003400',
-  },
-  signupButton: {
-    backgroundColor: '#1BCF5A',
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 30,
-    alignContent: 'center',
-    marginBottom:'2%',
-    marginTop:'2%',
-    opacity: 2, 
-  },
-signupButtonText: {
-    fontSize: 30,
-    color: 'white',
-    fontFamily: 'Bebas',
-    alignContent:'center',
-},
-  loginText: {
-    fontSize: 16,
-    color: '#003400',
-    textDecorationLine: 'underline',
-    marginTop: 20,
-  
-  },
-});
