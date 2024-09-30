@@ -1,4 +1,5 @@
 import React from "react";
+import "@/assets/styles/IndexStyle.css"
 import {
   Image,
   TouchableOpacity,
@@ -18,14 +19,7 @@ export default function Index() {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#B3D4C3",
-      }}
-    >
+    <View id="maincontainer">
       <ImageBackground
         source={require("@/assets/images/kiit_phone.png")}
         resizeMode="cover"
@@ -33,20 +27,10 @@ export default function Index() {
           flex: 1,
           width: "100%",
           height: "100%",
-          justifyContent: "center",
-          alignItems: "center",
         }}
       >
-        <View
-          style={{
-            width: "100%",
-            height: "100%",
-            backgroundColor: "black",
-            opacity: 0.65,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <View id="imagecover"></View>
+          <View id="content-container">
           <View
           style={{
             display: "flex",
@@ -54,33 +38,25 @@ export default function Index() {
           }}>
             <Navbar />
           </View>
-          <View>
+          <View id="text-container">
             <View>
-              <Text
+              <Text id="white-text"
                 style={{
-                  fontFamily: "Bebas",
-                  color: "#fff",
-                  fontSize: 40,
-                  marginTop: "110%",
-                  marginLeft: "10%",
+                  fontSize: 40
                 }}
               >
                 ORDER FROM THE NEAREST{" "}
               </Text>
-              <Text
+              <Text id="green-text"
                 style={{
-                  fontFamily: "Bebas",
-                  color: "#1BCF5A",
                   fontSize: 50,
-                  marginLeft: "10%",
-                  marginBottom: "2%",
                 }}
               >
                 FOOD COURT{" "}
               </Text>
             </View>
-            <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
-              <Text style={styles.buttonText}>GET STARTED →</Text>
+            <TouchableOpacity id="button" onPress={handleGetStarted}>
+              <Text id="button-text">GET STARTED →</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -89,22 +65,3 @@ export default function Index() {
   );
 }
 
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: "#1BCF5A",
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 30,
-    alignContent: "center",
-    marginBottom: "10%",
-    marginLeft: "10%",
-    marginRight: "10%",
-    opacity: 2,
-  },
-  buttonText: {
-    fontFamily: "Bebas",
-    alignItems: "center",
-    color: "#FFFFFF",
-    fontSize: 28,
-  },
-});
