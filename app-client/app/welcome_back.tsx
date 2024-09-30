@@ -5,7 +5,6 @@ import { useRouter } from 'expo-router';
 export default function Login() {
   const router = useRouter();
 
-  // State for form input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -46,8 +45,8 @@ export default function Login() {
         <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      
-      <TouchableOpacity style={styles.loginButton}>
+      {/* Temporary link to the food court page*/}
+      <TouchableOpacity onPress={() => router.push('/food_courts')} style={styles.loginButton}>
         <Text style={styles.loginButtonText}>LOGIN</Text>
       </TouchableOpacity>
 
