@@ -9,7 +9,7 @@ export default function FoodCourtList() {
     {
       name: 'FOOD COURT 1',
       campus: 'Campus: 17',
-      landmark: 'Landmark: QC 1-4, Mahatma Gandhi Statue',
+      landmark: 'Landmark: QC 1-4',
     },
     {
       name: 'FOOD COURT 2',
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 100, 
     height: 100,
-    
        
   },
   title: {
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
     color: '#1BCF5A',
     fontSize: 50,
     marginTop: '-20%',
-    marginBottom: 20,
+    marginBottom: '10%',
     textAlign: 'center', 
   },
   searchContainer: {
@@ -89,7 +88,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: '5%',
   },
   searchInput: {
     flex: 1,
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#0B6633',
     borderRadius: 10,
     padding: 20,
-    marginVertical: 10,
+    marginVertical: '1%',
   },
   cardTitle: {
     fontSize: 22,
@@ -114,12 +113,12 @@ const styles = StyleSheet.create({
   cardText: {
     fontSize: 16,
     color: 'white',
-    marginTop: 5,
+    marginTop: '1%',
   },
   mapText: {
     fontSize: 16,
     color: '#B3D4C3',
     textDecorationLine: 'underline',
-    marginTop: 10,
+    marginTop: '1%',
   },
 });
