@@ -15,22 +15,23 @@ export default function Navbar() {
     style={{
         display:"flex",
         flexDirection: "row",
-        gap: 20,
+        gap: 10,
         alignItems: "center",
+        paddingLeft: "2%"
 
     }}>
       <Image
         source={require("@/assets/images/kiit-logo.png")}
         style={{
-          width: 100,
-          height: 100,
+          width: 75,
+          height: 75,
         }}
       />
       <Text
         style={{
           fontFamily: "Bebas",
           color: "#1BCF5A",
-          fontSize: 50,
+          fontSize: 40,
         }}
       >
         KRUNCH
