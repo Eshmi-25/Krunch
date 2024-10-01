@@ -23,7 +23,7 @@ const AddNewFoodCourt = () => {
           <div className="grid grid-cols-2 gap-4 mt-5">
             <div>
               <label htmlFor="fc_no">Food Court Number</label>
-              <input
+              <input required
                 type="text"
                 name="fc_no"
                 id="fc_no"
@@ -32,7 +32,7 @@ const AddNewFoodCourt = () => {
             </div>
             <div>
               <label htmlFor="campus">Campus</label>
-              <input
+              <input required
                 type="text"
                 name="campus"
                 id="campus"
@@ -41,7 +41,7 @@ const AddNewFoodCourt = () => {
             </div>
             <div>
               <label htmlFor="landmark">Landmark</label>
-              <input
+              <input required
                 type="text"
                 name="landmark"
                 id="landmark"
@@ -50,7 +50,7 @@ const AddNewFoodCourt = () => {
             </div>
             <div>
               <label htmlFor="maplink">Map Link</label>
-              <input
+              <input required
                 type="text"
                 name="maplink"
                 id="maplink"
@@ -58,6 +58,16 @@ const AddNewFoodCourt = () => {
               />
             </div>
           </div>
+          <div className="mt-5">
+            <label htmlFor="githubLink">Github Link</label>
+            <input required
+              type="text"
+              name="githubLink"
+              id="githubLink"
+              className=" w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-tertiary text-accentgreen bg-accentwhite cabin"
+            />
+          </div>
+          
           <div className="px-5 mt-10">
             <div className="bg-accentwhite w-full h-1 mt-4 rounded-md"></div>
           </div>
