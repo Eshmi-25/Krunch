@@ -1,0 +1,38 @@
+:root {
+    --primary-color: #B3D4C3;
+    --secondary-color: #016B43;
+    --tertiary-color: #1BCF5A;
+    --accent-green-color: #003400;
+    --accent-white-color: #E3E9E5;
+}
+
+#FC-maincontainer{
+    background-color: var(--primary-color);
+    padding: 10%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+    height: 100%;
+
+}
+
+#FC-searchcontainer{
+    background-color: var(--accent-white-color);
+    border-radius: 10px;
+}
+
+#FC-listcontainer {
+    display: flex;
+    flex-wrap: wrap;  /* Allow wrapping */
+    gap: 10px;  /* A specific gap for clarity */
+    height: 100%;
+}
+
+#FC-card {
+    background-color: var(--accent-white-color);
+    border-color: var(--accent-green-color);
+    border-width: 1px;
+    border-radius: 30px;
+    padding: 10px;  /* Optional: Add padding inside cards */
+    margin: 5px;  /* Optional: Add margin around each card */
+}
