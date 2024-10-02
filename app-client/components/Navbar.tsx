@@ -1,32 +1,31 @@
-import React, { useState } from "react";
-import {
-  Image,
-  TouchableOpacity,
-  View,
-  Text,
-  ImageBackground,
-  StyleSheet,
-} from "react-native";
-import { useRouter } from "expo-router";
+import React from "react";
+import { Image, TouchableOpacity, View, Text } from "react-native";
+import { useRouter } from "expo-router"; 
 
 export default function Navbar() {
+  const router = useRouter(); 
+
   return (
-    <View 
-    style={{
-        display:"flex",
+    <View
+      style={{
+        display: "flex",
         flexDirection: "row",
         gap: 10,
         alignItems: "center",
-        paddingLeft: "2%"
+        paddingLeft: "2%",
+      }}
+    >
+      
+      <TouchableOpacity onPress={() => router.back()}>
+        <Image
+          source={require("@/assets/images/kiit-logo.png")}
+          style={{
+            width: 75,
+            height: 75,
+          }}
+        />
+      </TouchableOpacity>
 
-    }}>
-      <Image
-        source={require("@/assets/images/kiit-logo.png")}
-        style={{
-          width: 75,
-          height: 75,
-        }}
-      />
       <Text
         style={{
           fontFamily: "Bebas",
