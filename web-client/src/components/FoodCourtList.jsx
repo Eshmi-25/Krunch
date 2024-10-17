@@ -15,9 +15,12 @@ const FoodCourtList = ({foodCourt}) => {
             </a>
         </div>
         <div className='flex items-center justify-center'>
-            <button className="text-xl text-accentwhite rounded-md px-2 py-2 hover:bg-accentgreen">
+        <a href={`/editfoodCourt/${foodCourt.fc_no}`}>
+          <button className="text-xl text-accentwhite rounded-md px-2 py-2 hover:bg-accentgreen">
             <FaRegEdit />
-            </button>
+          </button>
+        </a>
+
             <button className="text-xl text-tertiary rounded-md px-2 py-2 hover:bg-accentgreen">
             <BiHide />
             </button>
