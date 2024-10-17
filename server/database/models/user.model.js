@@ -15,7 +15,7 @@ const User = connection.define('user', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    userType: {
+    usertype: {
         type: DataTypes.STRING,
         allowNull: false,
     },

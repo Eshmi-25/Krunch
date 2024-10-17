@@ -31,7 +31,7 @@ router.route('/createUser').post(async (req, res) => {
 router.route('/login').post(async (req, res) => {
     try {
         const data = req.body;
-        const user = await User.findOne({ email: data.email });
+        const user = await User.findOne({where: { email: data.email }});
         
         if (!user) {
             return res.status(401).send(JSON.stringify({ message: 'User not found' }));
@@ -42,7 +42,7 @@ router.route('/login').post(async (req, res) => {
             return res.status(401).send(JSON.stringify({ message: 'Invalid credentials' }));
         }
         const token = jwt.sign(
-            { id: user._id, email: user.email, usertype: user.userType },
+            { id: user._id, email: user.email, usertype: user.usertype },
             process.env.JWT_SECRET,
             { expiresIn: process.env.JWT_EXPIRES_IN }
         );

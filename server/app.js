@@ -7,7 +7,8 @@ const Item = require('./database/models/item.model');
 const OrderDetails = require('./database/models/order_details.model');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-const authRouter = require('./fc_apis/auth');
+const authRouter = require('./api/auth');
+const adminRouter = require('./api/admin');
 dotenv.config();
 
 const app = express();
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
     res.send('John Doe');
 });
 app.use('/auth', authRouter);
+app.use('/admin', adminRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(3000, async() => {
