@@ -1,0 +1,136 @@
+:root {
+    --primary-color: #B3D4C3;
+    --secondary-color: #016B43;
+    --tertiary-color: #1BCF5A;
+    --accent-green-color: #003400;
+    --accent-white-color: #E3E9E5;
+  }
+  
+  #container {
+    flex: 1;
+    background-color: var(--primary-color);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 50px;
+  }
+  
+  #foodCourtTitle {
+    font-family: 'Bebas';
+    color: var(--accent-green-color);
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+  
+  #foodCourtDetails {
+    font-size: 16px;
+    color: var(--accent-green-color);
+    margin-bottom: 20px;
+  }
+  
+  #mapLink {
+    color: var(--tertiary-color);
+    text-decoration: underline;
+  }
+  
+  #searchContainer {
+    background-color: var(--accent-white-color);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10%;
+    margin-right: 10%;
+  }
+  
+  #searchInput {
+    flex: 1;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--accent-green-color);
+  }
+  
+  #itemList {
+    flex: 1;
+  }
+  
+  #itemContainer {
+    background-color: #0B6633;
+    border-radius: 10px;
+    padding: 20px;
+    margin-right: 10%;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #itemName {
+    font-size: 18px;
+    color: white;
+    font-family: 'Bebas';
+  }
+  
+  #addButton {
+    background-color: var(--tertiary-color);
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  #addButtonText {
+    color: white;
+    font-size: 16px;
+    font-family: 'Bebas';
+  }
+  
+  #counterContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  #counterButton {
+    background-color: var(--tertiary-color);
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  #counterText {
+    color: white;
+    font-size: 16px;
+    font-family: 'Bebas';
+  }
+  
+  #quantityText {
+    font-size: 18px;
+    color: white;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  
+  #checkoutButton {
+    background-color: #0B6633;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5%;
+    margin-right: 10%;
+   
+  }
+  
+  #checkoutButtonText {
+    color: white;
+    font-size: 20px;
+    font-family: 'Bebas';
+  }
+  
