@@ -17,6 +17,12 @@ const ViewFoodCourts = () => {
       landmark: "MBA Garden",
       maplink: "https://google.com",
     },
+    {
+      fc_no: 11,
+      campus: 17,
+      landmark: "MBA Garden",
+      maplink: "https://google.com",
+    },
   ]);
   
   const [adminName, setAdminName] = useState("Admin")

@@ -18,8 +18,8 @@ const ViewOrders = () => {
   ];
   const [orders, setOrders] = useState([
     {
-      name: "Annesha Mukhopadhyay",
-      roll: "2105895",
+      name: "Aman Chaurasia",
+      roll: "21051370",
       orderid: "2",
       phone: "7908967455",
       items: [

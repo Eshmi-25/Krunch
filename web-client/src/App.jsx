@@ -8,6 +8,8 @@ import AddNewFoodCourt from './pages/Admin/AddNewFoodCourt'
 import AddNewItem from './pages/Admin/AddNewItem'
 import { BrowserRouter, Route, Routes, Navigate, Outlet } from 'react-router-dom'
 
+import EditFoodCourt from './pages/Admin/EditFoodCourt'
+
 function App() {
 
   return (
@@ -20,6 +22,10 @@ function App() {
       <Route path='/foodCourtOrders/:id' element={<FoodCourtOrders />} /> 
       <Route path='/addNewFoodCourt' element={<AddNewFoodCourt />} />
       <Route path='/addNewItem' element={<AddNewItem />} />
+
+
+      <Route path='/editfoodCourt/:id' element={<EditFoodCourt />} /> 
+
     </Routes>
     </BrowserRouter>
   )

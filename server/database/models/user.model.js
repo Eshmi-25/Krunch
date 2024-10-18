@@ -15,6 +15,10 @@ const User = connection.define('user', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    usertype: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
 })
 
 module.exports = User;
