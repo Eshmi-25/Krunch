@@ -29,7 +29,7 @@ export default function RootLayout() {
       <Stack.Screen name="+not-found" />
       <Stack.Screen name="food_courts" options={{ headerShown: false }} />
       <Stack.Screen name="item_list" options={{ headerShown: false }} />
-
+      <Stack.Screen name="checkout" options={{ headerShown: false }} />
     </Stack>
   );
 }

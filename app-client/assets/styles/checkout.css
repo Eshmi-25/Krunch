@@ -1,0 +1,108 @@
+:root {
+  --primary-color: #B3D4C3;
+  --secondary-color: #016B43;
+  --tertiary-color: #1BCF5A;
+  --accent-green-color: #003400;
+  --accent-white-color: #E3E9E5;
+}
+
+#container {
+  flex: 1;
+  background-color: var(--primary-color);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 50px;
+}
+
+#foodCourtTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--accent-green-color);
+  margin-bottom: 5px;
+}
+
+/* Details and map link styling */
+#details {
+  font-size: 14px;
+  color: var(--accent-green-color);
+}
+
+#mapLink {
+  font-size: 14px;
+  color:var(--tertiary-color);
+  text-decoration: underline;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+/* Table styling */
+#tableContainer {
+  border: 1px solid #003400;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+#tableHeader, #tableRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+#tableHeader {
+  background-color: var(--accent-white-color);
+}
+
+#tableText, #tableItem {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--accent-green-color);
+}
+
+
+#totalText {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--accent-green-color);
+  margin: 10px 0;
+}
+
+#phoneInput {
+  height: 40px;
+  border: 1px solid var(--accent-white-color);
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-bottom: 15px;
+  background-color: var(--accent-white-color);
+}
+
+/* Button Styles */
+#etaButton, #paymentButton {
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#etaButton {
+  background-color: #1BCF5A;
+}
+
+#paymentButton {
+  background-color: #003400;
+  padding: 15px;
+}
+
+#buttonText {
+  color: white;
+  font-size: 16px;
+}
+
+#paymentButtonText {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
