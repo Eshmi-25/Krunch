@@ -37,10 +37,11 @@
 
 /* Table styling */
 #tableContainer {
-  border: 1px solid #003400;
+  border: 1px solid var(--accent-green-color);
   border-radius: 5px;
   margin-bottom: 15px;
   overflow: hidden;
+  background-color: var(--primary-color);
 }
 
 #tableHeader, #tableRow {
@@ -97,12 +98,12 @@
 }
 
 #buttonText {
-  color: white;
+  color:var(--accent-white-color);
   font-size: 16px;
 }
 
 #paymentButtonText {
-  color: white;
+  color: var(--accent-white-color);
   font-size: 18px;
   font-weight: bold;
 }

@@ -28,12 +28,12 @@ export default function Checkout({  }) {
       <Text id="mapLink">Map Location</Text>
 
       <View id="tableContainer">
-        <View id="tableHeader">
-          <Text id="tableText">ITEM</Text>
-          <Text id="tableText">QTY</Text>
-          <Text id="tableText">PRICE</Text>
-        </View>
-     
+      <View id="tableHeader" style={{ flexDirection: "row", justifyContent: "space-between" }}>
+       <Text id="tableText">ITEM</Text>
+       <Text id="tableText">QTY</Text>
+       <Text id="tableText">PRICE</Text>
+      </View>
+      <Text>------------------------------------------------------------------</Text>
       </View>
 
       <Text id="totalText">Cart Total: Rs. </Text>
