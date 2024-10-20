@@ -55,11 +55,15 @@
 }
 
 #tableText, #tableItem {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   color: var(--accent-green-color);
 }
 
+#itemText, #tableRow{
+  font-size: 14px;
+  justify-content: space-between;
+}
 
 #totalText {
   font-size: 18px;
@@ -89,11 +93,11 @@
 }
 
 #etaButton {
-  background-color: #1BCF5A;
+  background-color: var(--tertiary-color);
 }
 
 #paymentButton {
-  background-color: #003400;
+  background-color: var(--accent-green-color);
   padding: 15px;
 }
 

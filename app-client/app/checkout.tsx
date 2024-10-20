@@ -2,23 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Navbar from '@/components/Navbar';
 import "@/assets/styles/checkout.css";
-import { router, useRouter } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 
-export default function Checkout({  }) {
-/*  // Parse the selected items from the JSON string
-  const { selectedItems } = route.params;
-  const [items, setItems] = useState([]);
-  const [phoneNumber, setPhoneNumber] = useState('');
-
+export default function Checkout() {
+  const { selectedItems } = useLocalSearchParams();  
+  const [items, setItems] = useState<{ name: string; quantity: number; price: string }[]>([]);
+  
+  
   useEffect(() => {
     if (selectedItems) {
-      setItems(JSON.parse(selectedItems));
+      try {
+        setItems(JSON.parse(selectedItems as string));
+      } catch (error) {
+        console.error("Error parsing selectedItems:", error);
+      }
     }
   }, [selectedItems]);
-
-  // Calculate total amount based on selected items
   const totalAmount = items.reduce((total, item) => total + item.quantity * parseFloat(item.price), 0);
-*/
+
+
   return (
     <View id="container">
       <Navbar/>
@@ -33,10 +35,20 @@ export default function Checkout({  }) {
        <Text id="tableText">QTY</Text>
        <Text id="tableText">PRICE</Text>
       </View>
-      <Text>------------------------------------------------------------------</Text>
+      <Text style={{justifyContent: "space-between"}}>------------------------------------------------------------------</Text>
+      <View>
+      {items.map((item, index) => (
+          <View key={index} id="tableRow" style={{ flexDirection: "row"}}>
+            <Text id="itemText">{item.name}</Text>
+            <Text id="itemText">{item.quantity}</Text>
+            <Text id="itemText">Rs.{parseFloat(item.price).toFixed(2)}</Text>
+          </View>
+        ))}
       </View>
+      </View>
+     
 
-      <Text id="totalText">Cart Total: Rs. </Text>
+      <Text id="totalText">Cart Total: Rs.{totalAmount.toFixed(2)} </Text>
 
       <TextInput
         id="phoneInput"
