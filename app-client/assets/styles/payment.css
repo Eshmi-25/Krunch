@@ -1,0 +1,72 @@
+
+:root {
+ 
+    --primary-color: #B3D4C3;
+    --secondary-color: #016B43;
+    --tertiary-color: #1BCF5A;
+    --accent-green-color: #003400;
+    --accent-white-color: #E3E9E5;
+}
+
+#main_container {
+    flex: 1;
+    background-color: var(--primary-color) ;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 1%;
+}
+
+#foodCourtTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--accent-green-color);
+    margin-bottom: 5px;
+}
+
+#foodCourtDetails {
+    font-size: 20px;
+    color: var(--accent-green-color);
+    margin-bottom: 20px;
+}
+
+#mapLink {
+    color: var(--tertiary-color);
+    text-decoration-line: underline; 
+}
+
+#payment_amount {
+    font-size: 20px;
+    font-weight: bold; 
+    margin-top: 20px;
+    text-align: center; 
+}
+
+
+#button, #button_Cancel, #button_Proceed {
+    background-color: var(--secondary-color);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 10%;
+    justify-content: center;
+    width: 80%;
+}
+
+#buttonText {
+    color:var(--accent-white-color);
+    text-align: center;
+}
+
+#buttonContainer{
+    width: 40%;
+    margin-top: 5%;
+    justify-content: center;
+}
+
+ #button_Proceed {
+   margin-right: 5%;
+   margin-left: 145%;
+}
+
+

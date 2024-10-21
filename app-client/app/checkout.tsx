@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Modal, FlatList } from 'react-native';
 import Navbar from '@/components/Navbar';
 import "@/assets/styles/checkout.css";
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 export default function Checkout() {
   const { selectedItems } = useLocalSearchParams();  
@@ -22,14 +22,12 @@ export default function Checkout() {
   }, [selectedItems]);
 
   useEffect(() => {
-    
     const generateTimeIntervals = () => {
       const intervals = [];
       const now = new Date();
       let startTime = new Date(now);
 
       startTime.setMinutes(Math.ceil(startTime.getMinutes() / 15) * 15, 0, 0);
-      
       const endTime = new Date();
       endTime.setHours(19, 0, 0, 0);
 
@@ -48,9 +46,17 @@ export default function Checkout() {
 
   const totalAmount = items.reduce((total, item) => total + item.quantity * parseFloat(item.price), 0);
 
-  const handleEtaSelect = (time: string) => {
+  const handleEtaSelect = (time: React.SetStateAction<string>) => {
     setSelectedEta(time);
     setIsDropdownOpen(false);
+  };
+
+  const handlePaymentNavigation = () => {
+   
+    router.push({
+      pathname: '/payment',
+      params: { totalAmount: totalAmount.toFixed(2) },
+    });
   };
 
   return (
@@ -112,9 +118,10 @@ export default function Checkout() {
         </View>
       </Modal>
 
-      <TouchableOpacity id="paymentButton">
+      <TouchableOpacity id="paymentButton" onPress={handlePaymentNavigation}>
         <Text id="paymentButtonText">Payment ▶</Text>
       </TouchableOpacity>
     </View>
   );
 }
+
