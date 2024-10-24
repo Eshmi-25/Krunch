@@ -35,7 +35,7 @@ export default function Payment() {
                     <TouchableOpacity id="button_Cancel" onPress={() => router.push('/item_list')}>
                         <Text id="buttonText">Cancel</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity id="button_Proceed">
+                    <TouchableOpacity id="button_Proceed" onPress={() => router.push('/final_page')}>
                         <Text id="buttonText">Proceed</Text>
                     </TouchableOpacity>
                 </View>
