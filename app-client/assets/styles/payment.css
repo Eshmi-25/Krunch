@@ -16,15 +16,8 @@
     padding-top: 1%;
 }
 
-#foodCourtTitle {
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--accent-green-color);
-    margin-bottom: 5px;
-}
-
 #foodCourtDetails {
-    font-size: 20px;
+    font-size: 25px;
     color: var(--accent-green-color);
     margin-bottom: 20px;
 }
@@ -35,14 +28,14 @@
 }
 
 #payment_amount {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold; 
-    margin-top: 20px;
+    margin-top: 20%;
     text-align: center; 
 }
 
 
-#button, #button_Cancel, #button_Proceed {
+#button {
     background-color: var(--secondary-color);
     padding: 15px;
     border-radius: 5px;
@@ -56,17 +49,34 @@
 #buttonText {
     color:var(--accent-white-color);
     text-align: center;
+    font-size: 20px;
 }
 
 #buttonContainer{
     width: 40%;
     margin-top: 5%;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#button_Cancel{
+    background-color: var(--secondary-color);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 25%;
     justify-content: center;
+    width: 80%;
 }
 
- #button_Proceed {
-   margin-right: 5%;
-   margin-left: 145%;
+#button_Proceed{
+    background-color: var(--secondary-color);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 40%;
+    justify-content: center;
+    width: 80%;
 }
-
-

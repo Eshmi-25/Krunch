@@ -9,8 +9,8 @@ export default function Payment() {
 
     return (
         <View style={{ flex: 1 }}>
-            <View id="main_container" style={{ flex: 1, padding: 0, margin: 0 }}>
-                <View style={{ display: "flex", justifyContent: "flex-start" }}>
+            <View id="main_container" >
+                <View >
                     <Navbar />
                 </View>
 
@@ -32,7 +32,7 @@ export default function Payment() {
                 </TouchableOpacity>
 
                 <View id="buttonContainer">
-                    <TouchableOpacity id="button_Cancel">
+                    <TouchableOpacity id="button_Cancel" onPress={() => router.push('/item_list')}>
                         <Text id="buttonText">Cancel</Text>
                     </TouchableOpacity>
                     <TouchableOpacity id="button_Proceed">
