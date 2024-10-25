@@ -1,0 +1,24 @@
+:root {
+ 
+    --primary-color: #B3D4C3;
+    --secondary-color: #016B43;
+    --tertiary-color: #1BCF5A;
+    --accent-green-color: #003400;
+    --accent-white-color: #E3E9E5;
+}
+
+#container {
+    flex: 1;
+    background-color: var(--primary-color) ;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 1%;
+}
+
+
+#foodCourtTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--accent-green-color);
+    margin-bottom: 5px;
+  }

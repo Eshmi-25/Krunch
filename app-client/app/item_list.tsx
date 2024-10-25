@@ -46,6 +46,8 @@ export default function FoodCourtMenu() {
       pathname: '/checkout',
       params: { selectedItems: JSON.stringify(selectedItems) }
     });
+
+    
   };
   
 
