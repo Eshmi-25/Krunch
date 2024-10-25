@@ -52,8 +52,9 @@ export default function Checkout() {
   };
 
   const handlePaymentNavigation = () => {
-    router.push({
-      pathname: '/final_page',
+
+      router.push({
+      pathname: '/payment',
       params: { 
         selectedItems: JSON.stringify(items), 
         totalAmount: totalAmount.toFixed(2), 
@@ -61,21 +62,6 @@ export default function Checkout() {
       },
     });
 };
-
-  const handleCheckout = () => {
-    const selectedItems = items.filter(item => item.quantity > 0);
-    
-    router.push({
-      pathname: '/checkout',
-      params: { selectedItems: JSON.stringify(selectedItems) }
-    });
-
-    router.push({
-      pathname: '/final_page',
-      params: { selectedItems: JSON.stringify(selectedItems) }
-    });
-  };
-  
 
   return (
     <View id="container">
