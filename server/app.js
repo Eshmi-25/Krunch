@@ -9,6 +9,8 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const authRouter = require('./api/auth');
 const adminRouter = require('./api/admin');
+const fcRouter = require('./api/food_court');
+const userRouter = require('./api/user');
 dotenv.config();
 
 const app = express();
@@ -19,6 +21,9 @@ app.get('/', (req, res) => {
 });
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
+app.use('/fc', fcRouter);
+app.use('/user', userRouter);
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(3000, async() => {
