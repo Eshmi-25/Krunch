@@ -30,7 +30,7 @@ export default function OrderPlaced() {
             </View>
 
             <View id="tableContainer">
-                <Text>ORDER PLACED</Text>
+                <Text style={{fontSize: 20, justifyContent: 'center'}}>ORDER PLACED</Text>
                 <View id="tableHeader" style={{ flexDirection: "row", justifyContent: "space-between" }}>
                     <Text id="tableText">ITEM</Text>
                     <Text id="tableText">QTY</Text>
