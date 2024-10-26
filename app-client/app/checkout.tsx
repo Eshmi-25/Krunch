@@ -114,7 +114,7 @@ export default function Checkout() {
               keyExtractor={(item) => item}
               renderItem={({ item }) => (
                 <TouchableOpacity onPress={() => handleEtaSelect(item)}>
-                  <Text style={{ padding: 10, fontSize: 16 }}>{item}</Text>
+                  <Text id="item">{item}</Text>
                 </TouchableOpacity>
               )}
             />
