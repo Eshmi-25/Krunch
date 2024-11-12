@@ -47,7 +47,7 @@
     padding: 6%;
 }
 
-TextInput {
+#textInput {
     flex: 1;
     height: 50%;
     font-size: 18;

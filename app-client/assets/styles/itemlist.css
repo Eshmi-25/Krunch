@@ -6,44 +6,50 @@
     --accent-white-color: #E3E9E5;
   }
   
-  #container {
+  #IL-container{
+    background-color: var(--primary-color);
+    height: 100%;
+    width: 100%;
+  }
+
+  #IL-maincontainer {
     flex: 1;
     background-color: var(--primary-color);
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 50px;
   }
   
-  #foodCourtTitle {
+  #IL-foodCourtTitle {
     font-family: 'Bebas';
     color: var(--accent-green-color);
     font-size: 30px;
     margin-bottom: 5px;
   }
   
-  #foodCourtDetails {
+  #IL-foodCourtDetails {
     font-size: 16px;
     color: var(--accent-green-color);
     margin-bottom: 20px;
   }
   
-  #mapLink {
+  #IL-mapLink {
     color: var(--tertiary-color);
     text-decoration: underline;
   }
   
-  #searchContainer {
+  #IL-searchContainer {
     background-color: var(--accent-white-color);
     border-radius: 10px;
     padding: 10px;
+    margin-right: 2%;
+    margin-left: 2%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 10%;
-    margin-right: 10%;
+    margin-bottom: 5%;
   }
   
-  #searchInput {
+  #IL-searchInput {
     flex: 1;
     font-size: 18px;
     padding-left: 10px;
@@ -51,58 +57,58 @@
     color: var(--accent-green-color);
   }
   
-  #itemList {
-    flex: 1;
-  }
   
-  #itemContainer {
+  #IL-itemContainer {
     background-color:var(--secondary-color);
     border-radius: 10px;
     padding: 20px;
-    margin-right: 10%;
     margin-top: 2%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    margin-right: 2%;
+    margin-left: 2%;
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr;
     align-items: center;
   }
   
-  #itemName {
+  #IL-itemName {
     font-size: 18px;
-    color: white;
+    color: var(--accent-white-color);
     font-family: 'Bebas';
   }
 
-  #price {
+  #IL-price {
     font-size: 18px;
     color:var(--accent-white-color);
     font-family: 'Bebas';
     
   }
   
-  #addButton {
+  #IL-addButton {
     background-color: var(--tertiary-color);
     border-radius: 10px;
     padding-left: 15px;
     padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    justify-content: center;
+    align-items: center;
   }
   
-  #addButtonText {
-    color: white;
+  #IL-addButtonText {
+    color: var(--accent-white-color);
     font-size: 16px;
     font-family: 'Bebas';
+    
   }
   
-  #counterContainer {
+  #IL-counterContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
     
   }
   
-  #counterButton {
+  #IL-counterButton {
     background-color: var(--tertiary-color);
     border-radius: 5px;
     padding-left: 10px;
@@ -111,34 +117,37 @@
     padding-bottom: 5px;
   }
   
-  #counterText {
-    color: white;
+  #IL-counterText {
+    color: var(--accent-white-color);
     font-size: 16px;
     font-family: 'Bebas';
   }
   
-  #quantityText {
+  #IL-quantityText {
     font-size: 18px;
-    color: white;
+    color: var(--accent-white-color);
     margin-right: 10px;
     margin-left: 10px;
   }
   
-  #checkoutButton {
-    background-color: #0B6633;
+  #IL-checkoutButton {
+    background-color: var(--secondary-color);
     border-radius: 10px;
     padding-top: 15px;
     padding-bottom: 15px;
     display: flex;
     align-items: center;
     margin-bottom: 5%;
-    margin-right: 10%;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-top: 5%;
    
   }
   
-  #checkoutButtonText {
-    color: white;
+  #IL-checkoutButtonText {
+    color: var(--accent-white-color);
     font-size: 20px;
     font-family: 'Bebas';
+    
   }
   
