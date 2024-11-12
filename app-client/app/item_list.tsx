@@ -52,46 +52,49 @@ export default function FoodCourtMenu() {
   
 
   return (
-    <View id="container">
-      <Navbar/>
-      <Text id="foodCourtDetails">Food Court Address: <Text id="mapLink">Map Link</Text></Text>
-      <View id="searchContainer">
-        <TextInput
-          id="searchInput"
-          placeholder="Search"
-          value={searchText}
-          onChangeText={setSearchText}
-        />
-      </View>
-
-      <ScrollView id="itemList">
-        {items.map((item) => (
-          <View key={item.id} id="itemContainer">
-            <Text id="itemName">{item.name}</Text>
-            <Text id="price">{item.price}</Text>
-            {item.quantity > 0 ? (
-              <View id="counterContainer">
-                <TouchableOpacity onPress={() => decrementItem(item.id)} id="counterButton">
-                  <Text id="counterText">-</Text>
-                </TouchableOpacity>
-                <Text id="quantityText">{item.quantity}</Text>
-                <TouchableOpacity onPress={() => incrementItem(item.id)} id="counterButton">
-                  <Text id="counterText">+</Text>
-                </TouchableOpacity>
-              </View>
-            ) : (
-              <TouchableOpacity onPress={() => incrementItem(item.id)} id="addButton">
-                <Text id="addButtonText">Add</Text>
-              </TouchableOpacity>
-            )}
-          </View>
-        ))}
-      </ScrollView>
-
-      <TouchableOpacity id="checkoutButton" onPress={handleCheckout}>
-        <Text id="checkoutButtonText">CHECKOUT 🛒</Text>
-      </TouchableOpacity>
+    <View id="IL-container">
+      <View>
+      <Navbar />
     </View>
+    <View id="IL-maincontainer">
+        <Text id="IL-foodCourtDetails">Food Court Address: <Text id="IL-mapLink">Map Link</Text></Text>
+        <View id="IL-searchContainer">
+          <TextInput
+            id="IL-searchInput"
+            placeholder="Search"
+            value={searchText}
+            onChangeText={setSearchText} />
+        </View>
+
+        <ScrollView>
+          {items.map((item) => (
+            <View key={item.id} id="IL-itemContainer">
+              <Text id="IL-itemName">{item.name}</Text>
+              <Text id="IL-price">{item.price}</Text>
+              {item.quantity > 0 ? (
+                <View id="IL-counterContainer">
+                  <TouchableOpacity onPress={() => decrementItem(item.id)} id="IL-counterButton">
+                    <Text id="IL-counterText">-</Text>
+                  </TouchableOpacity>
+                  <Text id="IL-quantityText">{item.quantity}</Text>
+                  <TouchableOpacity onPress={() => incrementItem(item.id)} id="IL-counterButton">
+                    <Text id="IL-counterText">+</Text>
+                  </TouchableOpacity>
+                </View>
+              ) : (
+                <TouchableOpacity onPress={() => incrementItem(item.id)} id="IL-addButton">
+                  <Text id="IL-addButtonText">Add</Text>
+                </TouchableOpacity>
+              )}
+            </View>
+          ))}
+        </ScrollView>
+
+        <TouchableOpacity id="IL-checkoutButton" onPress={handleCheckout}>
+          <Text id="IL-checkoutButtonText">CHECKOUT 🛒</Text>
+        </TouchableOpacity>
+      </View>
+      </View>
   );
 }
 
