@@ -48,11 +48,11 @@ export default function Payment() {
 
                 <Text id="payment_amount">To Pay: Rs. {totalAmount}</Text>
 
-                <TouchableOpacity id="button">
+                <TouchableOpacity id="button2">
                     <Text id="buttonText">Pay via UPI</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity id="button">
+                <TouchableOpacity id="button2">
                     <Text id="buttonText">Pay via Debit Card</Text>
                 </TouchableOpacity>
 
