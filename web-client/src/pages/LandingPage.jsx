@@ -2,16 +2,36 @@ import React from "react";
 import { useState } from "react";
 import ilovekiit from "../assets/ilovekiit.png";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const LandingPage = () => {
   const [loginType, setLoginType] = useState("");
   const [fcChecked, setFCChecked] = useState(false);
   const [adminChecked, setAdminChecked] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const nav = new useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
-    if(loginType === "Admin") nav("/viewFoodCourts");
-    else nav("/viewOrders");
+    axios.post("http://localhost:3000/auth/login", {
+      email: email,
+      password: password, 
+    }).then((res) => {
+      const decodedToken = jwtDecode(res.data.token);
+      if(decodedToken.usertype === "admin") {
+        localStorage.setItem("token", res.data.token);
+        nav("/viewFoodCourts");
+      } else if(decodedToken.usertype === "foodcourt") {
+        localStorage.setItem("token", res.data.token);
+        nav("/viewOrders");
+      }
+      else {
+        alert("Invalid credentials");
+      }
+    }).catch((err) => {
+      console.log(err);
+    });
   };
   return (
     <div className="overflow-hidden items-center justify-between h-screen w-screen flex md:flex-row flex-col">
@@ -65,6 +85,7 @@ const LandingPage = () => {
               type="email"
               id="email"
               placeholder="KIIT Email"
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-tertiary text-accentgreen bg-accentwhite cabin"
             />
           </div>
@@ -74,6 +95,7 @@ const LandingPage = () => {
               type="password"
               id="password"
               placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-tertiary text-accentgreen bg-accentwhite cabin"
             />
           </div>
