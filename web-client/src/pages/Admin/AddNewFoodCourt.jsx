@@ -8,33 +8,40 @@ import axios from "axios";
 const AddNewFoodCourt = () => {
   const [adminName, setAdminName] = useState("Admin");
   const [subtitle, setSubtitle] = useState("Mr/Ms/Mrs. " + adminName);
-  const [fcName, setFcName] = useState("");
-  const [fcLocation, setFcLocation] = useState("");
-  const [fcNumber, setFcNumber] = useState("");
+  const [fcNo, setFcNo] = useState(0);
+  const [landmark, setLandmark] = useState("");
+  const [campus, setCampus] = useState("");
+  const [mapLink, setMapLink] = useState("");
+  const [imageLink, setImageLink] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "/api/admin/addFC",
+        "http://localhost:3000/admin/addFC",
         {
-          name: fcName,
-          location: fcLocation,
-          fc_no: fcNumber,
+          fc_no: fcNo,
+          landmark: landmark,
+          campus: campus,
+          map_link: mapLink,
+          image_link: imageLink,
         },
         {
           headers: {
-            token: token, // Replace with the actual admin token
+            token: token,
           },
         }
       );
-      console.log(data);
-      console.log("Food Court added successfully:", response.data);
-      // Optionally, reset the form fields
-      setFcName("");
-      setFcLocation("");
-      setFcNumber("");
+      alert(
+        `Food court added\nEmail: ${response.data.email}\nPassword: ${response.data.password}\nPlease note credentials. They cannot be retrieved or regenerated.`
+      );
+
+      setFcNo(0);
+      setCampus("");
+      setImageLink("");
+      setLandmark("");
+      setMapLink("");
     } catch (error) {
       console.error("Error adding food court:", error);
     }
@@ -56,63 +63,86 @@ const AddNewFoodCourt = () => {
           <div className="grid grid-cols-2 gap-4 mt-5">
             <div>
               <label htmlFor="fc_no">Food Court Number</label>
-              <input required
-                type="text"
+              <input
+                required
+                type="number"
                 name="fc_no"
                 id="fc_no"
+                onChange={(e) => {
+                  setFcNo(e.target.value);
+                }}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-tertiary text-accentgreen bg-accentwhite cabin"
               />
             </div>
             <div>
               <label htmlFor="campus">Campus</label>
-              <input required
+              <input
+                required
                 type="text"
                 name="campus"
                 id="campus"
+                onChange={(e) => {
+                  setCampus(e.target.value);
+                }}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-tertiary text-accentgreen bg-accentwhite cabin"
               />
             </div>
             <div>
               <label htmlFor="landmark">Landmark</label>
-              <input required
+              <input
+                required
                 type="text"
                 name="landmark"
                 id="landmark"
+                onChange={(e) => {
+                  setLandmark(e.target.value);
+                }}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-tertiary text-accentgreen bg-accentwhite cabin"
               />
             </div>
             <div>
               <label htmlFor="maplink">Map Link</label>
-              <input required
+              <input
+                required
                 type="text"
                 name="maplink"
                 id="maplink"
+                onChange={(e) => {
+                  setMapLink(e.target.value);
+                }}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-tertiary text-accentgreen bg-accentwhite cabin"
               />
             </div>
           </div>
           <div className="mt-5">
-            <label htmlFor="githubLink">Github Link</label>
-            <input required
+            <label htmlFor="githubLink">Image Link</label>
+            <input
+              required
               type="text"
               name="githubLink"
               id="githubLink"
+              onChange={(e) => {
+                setImageLink(e.target.value);
+              }}
               className=" w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-tertiary text-accentgreen bg-accentwhite cabin"
             />
           </div>
-          
+
           <div className="px-5 mt-10">
             <div className="bg-accentwhite w-full h-1 mt-4 rounded-md"></div>
           </div>
           <div className="mt-5 mb-5 text-center flex items-center justify-center gap-5">
-            <button className="bg-tertiary text-accentgreen shadow-md hover:bg-accentgreen hover:text-accentwhite p-2 rounded-md">
+            <button
+              className="bg-tertiary text-accentgreen shadow-md hover:bg-accentgreen hover:text-accentwhite p-2 rounded-md"
+              onClick={handleSubmit}
+            >
               <div className="flex items-center gap-2">
                 <IoMdAdd />
                 Add
               </div>
             </button>
             <button className="bg-tertiary text-accentgreen shadow-md hover:bg-accentgreen hover:text-accentwhite p-2 rounded-md">
-            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <GrPowerReset />
                 Reset
               </div>
