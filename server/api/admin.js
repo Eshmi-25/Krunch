@@ -79,7 +79,7 @@ router.route("/editFC/:id").put(verifyAdmin, async (req, res) => {
 });
 
 // Delete a food court
-router.route("/deleteFC/:id").put(verifyAdmin, async (req, res) => {
+router.route("/deleteFC/:id").delete(verifyAdmin, async (req, res) => {
   try {
     const foodCourt = await FoodCourt.findOne({where: {fc_no: req.params.id}});
     if (!foodCourt) {
