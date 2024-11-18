@@ -6,6 +6,7 @@ const Item = connection.define('item', {
         type: DataTypes.BIGINT,
         primaryKey: true,
         allowNull: false,
+        autoIncrement: true,
     },
     item_name: {
         type: DataTypes.STRING,

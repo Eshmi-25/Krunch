@@ -8,6 +8,7 @@ const User = require("../database/models/user.model");
 // const Transaction = require("../database/models/Transaction");
 const Order = require("../database/models/order.model");
 const EReceipt = require("../database/models/order_details.model");
+const Item = require("../database/models/item.model");
 
 // Middleware to verify admin token
 const verifyAdmin = (req, res, next) => {
@@ -128,6 +129,19 @@ router.route("/order/:order_id").get(verifyAdmin, async (req, res) => {
     res.status(500).send({ message: "Internal server error" });
   }
 });
+
+// Add item
+router.route("/addItem").post(verifyAdmin, async(req, res) => {
+  const data = req.body;
+  const item = new Item(data);
+  try {
+    await item.save();
+    res.status(200).send({ message: "Added new item" });
+  } catch(err) {
+    console.log(err);
+    res.status(500).send({ message: "Could not add item" });
+  }
+})
 
 // Get list of all food courts
 router.route("/foodcourts").get(verifyAdmin, async (req, res) => {
