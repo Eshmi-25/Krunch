@@ -3,10 +3,43 @@ import HeadBanner from "../../components/HeadBanner";
 import AdminNavigateLinks from "../../components/AdminNavigateLinks";
 import { IoMdAdd } from "react-icons/io";
 import { GrPowerReset } from "react-icons/gr";
+import axios from "axios";
 
 const AddNewFoodCourt = () => {
   const [adminName, setAdminName] = useState("Admin");
   const [subtitle, setSubtitle] = useState("Mr/Ms/Mrs. " + adminName);
+  const [fcName, setFcName] = useState("");
+  const [fcLocation, setFcLocation] = useState("");
+  const [fcNumber, setFcNumber] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        "/api/admin/addFC",
+        {
+          name: fcName,
+          location: fcLocation,
+          fc_no: fcNumber,
+        },
+        {
+          headers: {
+            token: token, // Replace with the actual admin token
+          },
+        }
+      );
+      console.log(data);
+      console.log("Food Court added successfully:", response.data);
+      // Optionally, reset the form fields
+      setFcName("");
+      setFcLocation("");
+      setFcNumber("");
+    } catch (error) {
+      console.error("Error adding food court:", error);
+    }
+  };
+
   return (
     <div className="bg-primary min-h-screen min-w-screen flex flex-col p-10">
       <div className="flex justify-between">
