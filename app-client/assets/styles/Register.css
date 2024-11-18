@@ -1,92 +1,92 @@
 :root {
-    --primary-color: #B3D4C3;
-    --secondary-color: #016B43;
-    --tertiary-color: #1BCF5A;
-    --accent-green-color: #003400;
-    --accent-white-color: #E3E9E5;
+  --primary-color: #b3d4c3;
+  --secondary-color: #016b43;
+  --tertiary-color: #1bcf5a;
+  --accent-green-color: #003400;
+  --accent-white-color: #e3e9e5;
 }
 
-#main-container{
-    background-color: var(--primary-color);
-    height: 100%;
-    width: 100%;
+#main-container {
+  background-color: var(--primary-color);
+  height: 100%;
+  width: 100%;
 }
 
-#container{
-    flex: 1;
-    justify-content: center;
-    /* align-items: center; */
-    /* gap: 10px; */
-    height: 100%;
-    width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
+#container {
+  flex: 1;
+  justify-content: center;
+  /* align-items: center; */
+  /* gap: 10px; */
+  height: 100%;
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 #register-text {
-    font-family: 'Bebas';
-    color: var(--accent-green-color);
-    font-size: 4rem;
-    text-align: center;
+  font-family: "Bebas";
+  color: var(--accent-green-color);
+  font-size: 4rem;
+  text-align: center;
 }
 
-#subheading{
-    font-family: 'Regular';
-    color: var(--accent-green-color);
-    font-size: 20;
-    margin-top: '2%';
-    text-align: center;
-    margin-bottom: 10%;
-    font-size: 1.5rem;
+#subheading {
+  font-family: "Regular";
+  color: var(--accent-green-color);
+  font-size: 20;
+  margin-top: "2%";
+  text-align: center;
+  margin-bottom: 10%;
+  font-size: 1.5rem;
 }
 
 #input-container {
-    margin-top: 10;
-    background-color: var(--accent-white-color);
-    border-radius: 10px;
-    padding: 6%;
+  margin-top: 10;
+  background-color: var(--accent-white-color);
+  border-radius: 10px;
+  padding: 6%;
 }
 
 #textInput {
-    flex: 1;
-    height: 50%;
-    font-size: 18;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: var(--accent-green-color);
+  flex: 1;
+  height: 50%;
+  font-size: 18;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: var(--accent-green-color);
 }
 
 #signup-button {
-    background-color: var(--tertiary-color);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
-    border-radius: 30px;
-    align-items: center;
-    margin-bottom:2%;
-    margin-top:10%;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+  background-color: var(--tertiary-color);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 30px;
+  align-items: center;
+  margin-bottom: 2%;
+  margin-top: 10%;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
 }
 
 #signup-button-text {
-    font-size: 1.4rem;
-    color: var(--accent-white-color);
-    font-family: Bebas;
-    align-items: center;
+  font-size: 1.4rem;
+  color: var(--accent-white-color);
+  font-family: Bebas;
+  align-items: center;
 }
 
 #login-text {
-    font-size: 16;
-    color: var(--accent-green-color);
-    text-decoration: underline;
+  font-size: 16;
+  color: var(--accent-green-color);
+  text-decoration: underline;
 }
 
 #nav-label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
 }

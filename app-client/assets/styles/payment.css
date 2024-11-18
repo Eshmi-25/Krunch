@@ -1,94 +1,90 @@
-
 :root {
- 
-    --primary-color: #B3D4C3;
-    --secondary-color: #016B43;
-    --tertiary-color: #1BCF5A;
-    --accent-green-color: #003400;
-    --accent-white-color: #E3E9E5;
+  --primary-color: #b3d4c3;
+  --secondary-color: #016b43;
+  --tertiary-color: #1bcf5a;
+  --accent-green-color: #003400;
+  --accent-white-color: #e3e9e5;
 }
 
 #pay_main_container {
-    background-color: var(--primary-color);
-    height: 100%;
-    width: 100%;
+  background-color: var(--primary-color);
+  height: 100%;
+  width: 100%;
 }
 
 #pay_container {
-    background-color: var(--primary-color);
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20%;
+  background-color: var(--primary-color);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20%;
 }
 
 #pay_foodCourtDetails {
-    font-size: x-large;
-    color: var(--accent-green-color);
-    margin-bottom: 2%;
+  font-size: x-large;
+  color: var(--accent-green-color);
+  margin-bottom: 2%;
 }
 
-#pay_fcinfo{
-    font-size: large;
-    color: var(--accent-green-color);
+#pay_fcinfo {
+  font-size: large;
+  color: var(--accent-green-color);
 }
 
 #pay_mapLink {
-    font-size: large;
-    color: var(--secondary-color);
-    text-decoration-line: underline; 
+  font-size: large;
+  color: var(--secondary-color);
+  text-decoration-line: underline;
 }
 
 #pay_payment_amount {
-    font-size: x-large;
-    font-weight: bold; 
-    margin-top: 25%;
-    text-align: center; 
-    color: var(--accent-green-color);
+  font-size: x-large;
+  font-weight: bold;
+  margin-top: 25%;
+  text-align: center;
+  color: var(--accent-green-color);
 }
 
-
 #pay_button2 {
-    background-color: var(--secondary-color);
-    padding: 5%;
-    border-radius: 5px;
-    margin-bottom: 5%;
-    margin-top: 5%;
-    margin-left: 10%;
-    justify-content: center;
-    width: 80%;
+  background-color: var(--secondary-color);
+  padding: 5%;
+  border-radius: 5px;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  margin-left: 10%;
+  justify-content: center;
+  width: 80%;
 }
 
 #pay_buttonText {
-    color:var(--accent-white-color);
-    text-align: center;
-    font-size: large;
+  color: var(--accent-white-color);
+  text-align: center;
+  font-size: large;
 }
 
-#pay_buttonContainer{
-    width: 40%;
-    margin-top: 5%;
-    justify-content: space-between;
-    flex-direction: row;
+#pay_buttonContainer {
+  width: 40%;
+  margin-top: 5%;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
-#pay_button_Cancel{
-    background-color: var(--secondary-color);
-    padding: 10%;
-    border-radius: 5px;
-    margin-bottom: 5%;
-    margin-top: 5%;
-    margin-left: 25%;
-    justify-content: center;
-    width: 80%;
+#pay_button_Cancel {
+  background-color: var(--secondary-color);
+  padding: 10%;
+  border-radius: 5px;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  margin-left: 25%;
+  justify-content: center;
+  width: 80%;
 }
 
-#pay_button_Proceed{
-    background-color: var(--secondary-color);
-    padding: 10%;
-    border-radius: 5px;
-    margin-bottom: 5%;
-    margin-top: 5%;
-    margin-left: 40%;
-    justify-content: center;
-    
+#pay_button_Proceed {
+  background-color: var(--secondary-color);
+  padding: 10%;
+  border-radius: 5px;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  margin-left: 40%;
+  justify-content: center;
 }

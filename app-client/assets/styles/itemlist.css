@@ -1,154 +1,146 @@
 :root {
-    --primary-color: #B3D4C3;
-    --secondary-color: #016B43;
-    --tertiary-color: #1BCF5A;
-    --accent-green-color: #003400;
-    --accent-white-color: #E3E9E5;
-  }
-  
-  #IL-container{
-    background-color: var(--primary-color);
-    height: 100%;
-    width: 100%;
-  }
+  --primary-color: #b3d4c3;
+  --secondary-color: #016b43;
+  --tertiary-color: #1bcf5a;
+  --accent-green-color: #003400;
+  --accent-white-color: #e3e9e5;
+}
 
-  #IL-maincontainer {
-    flex: 1;
-    background-color: var(--primary-color);
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  
-  #IL-foodCourtTitle {
-    font-family: 'Bebas';
-    color: var(--accent-green-color);
-    font-size: 30px;
-    margin-bottom: 5px;
-  }
-  
-  #IL-foodCourtDetails {
-    font-size: 16px;
-    color: var(--accent-green-color);
-    
-  }
-  
-  #IL-mapLink {
-    color: var(--secondary-color);
-    text-decoration: underline;
-  }
-  
-  #IL-searchContainer {
-    background-color: var(--accent-white-color);
-    border-radius: 10px;
-    padding: 10px;
-    margin-right: 2%;
-    margin-left: 2%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
-  }
-  
-  #IL-searchInput {
-    flex: 1;
-    font-size: 18px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: var(--accent-green-color);
-  }
-  
-  
-  #IL-itemContainer {
-    background-color:var(--secondary-color);
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 2%;
-    margin-right: 2%;
-    margin-left: 2%;
-    display: grid;
-    grid-template-columns: 2fr 1.5fr 1.5fr;
-    align-items: center;
-  }
-  
-  #IL-itemName {
-    font-size: 18px;
-    color: var(--accent-white-color);
-    font-family: 'Bebas';
-  }
+#IL-container {
+  background-color: var(--primary-color);
+  height: 100%;
+  width: 100%;
+}
 
-  #IL-price {
-    font-size: 18px;
-    color:var(--accent-white-color);
-    font-family: 'Bebas';
-    
-  }
-  
-  #IL-addButton {
-    background-color: var(--tertiary-color);
-    border-radius: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #IL-addButtonText {
-    color: var(--accent-white-color);
-    font-size: 16px;
-    font-family: 'Bebas';
-    
-  }
-  
-  #IL-counterContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    
-  }
-  
-  #IL-counterButton {
-    background-color: var(--tertiary-color);
-    border-radius: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-  
-  #IL-counterText {
-    color: var(--accent-white-color);
-    font-size: 16px;
-    font-family: 'Bebas';
-  }
-  
-  #IL-quantityText {
-    font-size: 18px;
-    color: var(--accent-white-color);
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-  
-  #IL-checkoutButton {
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 5%;
-    margin-right: 2%;
-    margin-left: 2%;
-    margin-top: 5%;
-   
-  }
-  
-  #IL-checkoutButtonText {
-    color: var(--accent-white-color);
-    font-size: 20px;
-    font-family: 'Bebas';
-    
-  }
-  
+#IL-maincontainer {
+  flex: 1;
+  background-color: var(--primary-color);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#IL-foodCourtTitle {
+  font-family: "Bebas";
+  color: var(--accent-green-color);
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+#IL-foodCourtDetails {
+  font-size: 16px;
+  color: var(--accent-green-color);
+}
+
+#IL-mapLink {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+#IL-searchContainer {
+  background-color: var(--accent-white-color);
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 2%;
+  margin-left: 2%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+#IL-searchInput {
+  flex: 1;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: var(--accent-green-color);
+}
+
+#IL-itemContainer {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 2%;
+  margin-right: 2%;
+  margin-left: 2%;
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr;
+  align-items: center;
+}
+
+#IL-itemName {
+  font-size: 18px;
+  color: var(--accent-white-color);
+  font-family: "Bebas";
+}
+
+#IL-price {
+  font-size: 18px;
+  color: var(--accent-white-color);
+  font-family: "Bebas";
+}
+
+#IL-addButton {
+  background-color: var(--tertiary-color);
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+#IL-addButtonText {
+  color: var(--accent-white-color);
+  font-size: 16px;
+  font-family: "Bebas";
+}
+
+#IL-counterContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#IL-counterButton {
+  background-color: var(--tertiary-color);
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#IL-counterText {
+  color: var(--accent-white-color);
+  font-size: 16px;
+  font-family: "Bebas";
+}
+
+#IL-quantityText {
+  font-size: 18px;
+  color: var(--accent-white-color);
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+#IL-checkoutButton {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5%;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 5%;
+}
+
+#IL-checkoutButtonText {
+  color: var(--accent-white-color);
+  font-size: 20px;
+  font-family: "Bebas";
+}

@@ -1,9 +1,9 @@
 import React from "react";
 import { Image, TouchableOpacity, View, Text } from "react-native";
-import { useRouter } from "expo-router"; 
+import { useRouter } from "expo-router";
 
 export default function Navbar() {
-  const router = useRouter(); 
+  const router = useRouter();
 
   return (
     <View
@@ -15,7 +15,6 @@ export default function Navbar() {
         paddingLeft: "2%",
       }}
     >
-      
       <TouchableOpacity onPress={() => router.back()}>
         <Image
           source={require("@/assets/images/kiit-logo.png")}

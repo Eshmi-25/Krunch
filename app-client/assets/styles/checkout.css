@@ -1,12 +1,12 @@
 :root {
-  --primary-color: #B3D4C3;
-  --secondary-color: #016B43;
-  --tertiary-color: #1BCF5A;
+  --primary-color: #b3d4c3;
+  --secondary-color: #016b43;
+  --tertiary-color: #1bcf5a;
   --accent-green-color: #003400;
-  --accent-white-color: #E3E9E5;
+  --accent-white-color: #e3e9e5;
 }
 
-#CH-maincontainer{
+#CH-maincontainer {
   background-color: var(--primary-color);
   height: 100%;
   width: 100%;
@@ -15,12 +15,11 @@
   background-color: var(--primary-color);
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 50px;
+  padding-top: 20%;
 }
 
 #CH-foodCourtDetails {
-  font-size: larger;
-  font-weight: bold;
+  font-size: x-large;
   color: var(--accent-green-color);
   margin-bottom: 2%;
 }
@@ -31,11 +30,9 @@
 }
 
 #CH-mapLink {
-  font-size: medium;
-  color:var(--secondary-color);
-  text-decoration: underline;
-  margin-bottom: 10%;
-  cursor: pointer;
+  font-size: large;
+  color: var(--secondary-color);
+  text-decoration-line: underline;
 }
 
 /* Table styling */
@@ -46,13 +43,11 @@
   margin-bottom: 10%;
   overflow: hidden;
   background-color: var(--accent-white-color);
-
-
+  margin-top: 10%;
 }
 
 #CH-tableRow {
-
-  padding: 2%
+  padding: 2%;
 }
 
 #CH-tableHeader {
@@ -62,22 +57,21 @@
   padding: 1%;
 }
 
-#CH-tableText, #CH-tableItem {
-  
+#CH-tableText,
+#CH-tableItem {
   font-size: medium;
   font-weight: bold;
   color: var(--accent-white-color);
 }
 
-#CH-itemCont{
+#CH-itemCont {
   display: grid;
   grid-template-columns: 2fr 1.5fr 1fr;
 }
-#CH-itemText, #CH-tableRow{
 
+#CH-itemText {
   font-size: medium;
   color: var(--accent-green-color);
-
 }
 
 #CH-totalText {
@@ -97,7 +91,8 @@
 }
 
 /* Button Styles */
-#CH-etaButton, #CH-paymentButton {
+#CH-etaButton,
+#CH-paymentButton {
   border-radius: 5px;
   padding: 10px;
   display: flex;
@@ -118,13 +113,11 @@
 }
 
 #CH-buttonText {
-  color:var(--accent-white-color);
+  color: var(--accent-white-color);
   font-size: large;
 }
 
 #CH-paymentButtonText {
   color: var(--accent-white-color);
   font-size: large;
-
 }
-

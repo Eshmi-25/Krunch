@@ -1,69 +1,81 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import Navbar from '@/components/Navbar';
-import { useLocalSearchParams, router } from 'expo-router';
-import '@/assets/styles/payment.css';
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
+import Navbar from "@/components/Navbar";
+import { useLocalSearchParams, router } from "expo-router";
+import "@/assets/styles/payment.css";
 
 export default function Payment() {
-    const { selectedItems, name, campus, landmark } = useLocalSearchParams();
-    const [items, setItems] = useState<{ name: string; quantity: number; price: string }[]>([]);
-    const { totalAmount } = useLocalSearchParams();
-    const {eta} = useLocalSearchParams();
-    
+  const { selectedItems, name, campus, landmark } = useLocalSearchParams();
+  const [items, setItems] = useState<
+    { name: string; quantity: number; price: string }[]
+  >([]);
+  const { totalAmount } = useLocalSearchParams();
+  const { eta } = useLocalSearchParams();
 
-    useEffect(() => {
-        if (selectedItems) {
-          try {
-            setItems(JSON.parse(selectedItems as string));
-          } catch (error) {
-            console.error("Error parsing selectedItems:", error);
-          }
-        }
-      }, [selectedItems]);
-    
-    const proceedpayment = () => {
+  useEffect(() => {
+    if (selectedItems) {
+      try {
+        setItems(JSON.parse(selectedItems as string));
+      } catch (error) {
+        console.error("Error parsing selectedItems:", error);
+      }
+    }
+  }, [selectedItems]);
 
-        router.push({
-        pathname: '/final_page',
-        params: { 
-          selectedItems: JSON.stringify(items), 
-          totalAmount: totalAmount, 
-          eta: eta 
-        },
-      });
+  const proceedpayment = () => {
+    router.push({
+      pathname: "/final_page",
+      params: {
+        selectedItems: JSON.stringify(items),
+        totalAmount: totalAmount,
+        eta: eta,
+        name,
+        campus,
+        landmark,
+      },
+    });
   };
-    return (
-            <View id="pay_main_container" >
-                <View >
-                    <Navbar/>
-                </View>
-            <View id="pay_container">
-                <View>
-                    <Text id="pay_foodCourtDetails">{name}</Text>
-                    <Text id="pay_fcinfo">{campus}</Text>
-                    <Text id="pay_fcinfo">{landmark}</Text>
-                    <Text id="pay_mapLink">Map Location</Text>
-                </View>
-
-                <Text id="pay_payment_amount">To Pay: Rs. {totalAmount}</Text>
-
-                <TouchableOpacity id="pay_button2">
-                    <Text id="pay_buttonText">Pay via UPI</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity id="pay_button2">
-                    <Text id="pay_buttonText">Pay via Debit Card</Text>
-                </TouchableOpacity>
-
-                <View id="pay_buttonContainer">
-                    <TouchableOpacity id="pay_button_Cancel" onPress={() => router.push('/item_list')}>
-                        <Text id="pay_buttonText">Cancel</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity id="pay_button_Proceed" onPress={proceedpayment}>
-                        <Text id="pay_buttonText">Proceed</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+  return (
+    <View id="pay_main_container">
+      <View>
+        <Navbar />
+      </View>
+      <View id="pay_container">
+        <View>
+          <Text id="pay_foodCourtDetails">{name}</Text>
+          <Text id="pay_fcinfo">{campus}</Text>
+          <Text id="pay_fcinfo">{landmark}</Text>
+          <Text id="pay_mapLink">Map Location</Text>
         </View>
-    );
+
+        <Text id="pay_payment_amount">To Pay: Rs. {totalAmount}</Text>
+
+        <TouchableOpacity id="pay_button2">
+          <Text id="pay_buttonText">Pay via UPI</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity id="pay_button2">
+          <Text id="pay_buttonText">Pay via Debit Card</Text>
+        </TouchableOpacity>
+
+        <View id="pay_buttonContainer">
+          <TouchableOpacity
+            id="pay_button_Cancel"
+            onPress={() => router.push("/item_list")}
+          >
+            <Text id="pay_buttonText">Cancel</Text>
+          </TouchableOpacity>
+          <TouchableOpacity id="pay_button_Proceed" onPress={proceedpayment}>
+            <Text id="pay_buttonText">Proceed</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  );
 }
