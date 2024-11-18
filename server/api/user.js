@@ -7,6 +7,7 @@ const User = require("../database/models/user.model");
 // const Transaction = require("../models/Transaction");
 const Order = require("../database/models/order.model");
 const EReceipt = require("../database/models/order_details.model");
+const FoodCourt = require('../database/models/food_court.model');
 
 // Middleware to verify User token
 const verifyUser = (req, res, next) => {
@@ -79,6 +80,17 @@ router.route("/orderHistory/:email").get(verifyUser, async (req, res) => {
   } catch (error) {
     console.error("Error retrieving order history:", error); // Log the error details
     res.status(500).send({ message: "Internal server error", error: error.message });
+  }
+});
+
+// fetch foodcourts
+router.route('/fetchFCs').get(verifyUser, async(req, res) => {
+  try {
+    const foodCourts = await FoodCourt.findAll();
+    res.status(200).send(foodCourts);
+  } catch (error) {
+    console.error("Error fetching food courts:", error);
+    res.status(500).send({ message: "Internal server error" });
   }
 });
 

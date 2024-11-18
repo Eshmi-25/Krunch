@@ -93,7 +93,7 @@ router.route("/deleteFC/:id").put(verifyAdmin, async (req, res) => {
       foodCourt,
     });
   } catch (error) {
-    console.error("Error deleting food court:", error); // Log the error details
+    console.error("Error deleting food court:", error);
     res.status(500).send({ message: "Internal server error", error: error.message });
   }
 });

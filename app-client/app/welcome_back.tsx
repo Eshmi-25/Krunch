@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import {
-  Image,
-  TouchableOpacity,
   View,
   Text,
   TextInput,
-  StyleSheet,
   Pressable,
 } from "react-native";
 import { useRouter } from "expo-router";
 import Navbar from "@/components/Navbar";
 import "@/assets/styles/Register.css";
+import { jwtDecode } from 'jwt-decode';
 
 export default function Login() {
   const router = useRouter();
@@ -19,6 +17,40 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
+    fetch('http://localhost:3000/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Registration Failed');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data.token);
+        const tokenData = jwtDecode(data.token);
+        console.log(tokenData);
+        if(tokenData.usertype === "user") {
+          localStorage.setItem("token", data.token);
+          setEmail("");
+          setPassword("");
+        } else {
+          alert("Invalid credentials");
+          setEmail("");
+          setPassword("");
+        }
+      })
+      .catch((error) => {
+        alert(error.message || "An error occurred");
+        console.error(error);
+      });
     router.push("/food_courts");
   };
 

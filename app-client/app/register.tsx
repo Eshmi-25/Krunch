@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import {
-  Image,
-  TouchableOpacity,
   View,
   Text,
   TextInput,
-  StyleSheet,
   Pressable,
 } from "react-native";
 import { useRouter } from "expo-router";
@@ -25,8 +22,37 @@ export default function Register() {
       alert("Passwords do not match");
       return;
     }
-
-    alert("Registered successfully");
+    fetch('http://localhost:3000/auth/createUser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        name: name,
+        password: password,
+        usertype: "user",
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Registration Failed');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        alert("Registered successfully, please proceed to login page");
+        router.push('/welcome_back');
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setName("");
+      })
+      .catch((error) => {
+        alert(error.message || "An error occurred");
+        console.error(error);
+      });    
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -12,36 +12,43 @@ import Navbar from "@/components/Navbar";
 import "@/assets/styles/FoodCourts.css";
 import "@/assets/images/QC_FC.jpg";
 import { router } from "expo-router";
+interface FoodCourt {
+  name: string;
+  campus: string;
+  landmark: string;
+  img?: string;
+}
 
 export default function FoodCourtList() {
   const [searchText, setSearchText] = useState("");
+  const token = localStorage.getItem('token');
 
-  const [foodCourts, setFoodCourts] = useState([
-    {
-      img: "https://nsinha025.github.io/FC-Images/campus-15-food-court-bhubaneshwar-food-court-6kzsnjb1d1.jpg",
-      name: "FOOD COURT 1",
-      campus: "Campus: 17",
-      landmark: "Landmark: QC 1-4",
-    },
-    {
-      img: "https://nsinha025.github.io/FC-Images/campus-15-food-court-bhubaneshwar-food-court-6kzsnjb1d1.jpg",
-      name: "FOOD COURT 2",
-      campus: "Campus: 16",
-      landmark: "Landmark: Opposite Library",
-    },
-    {
-      img: "https://nsinha025.github.io/FC-Images/campus-15-food-court-bhubaneshwar-food-court-6kzsnjb1d1.jpg",
-      name: "FOOD COURT 3",
-      campus: "Campus: 16",
-      landmark: "Landmark: Opposite Library",
-    },
-    {
-      img: "https://nsinha025.github.io/FC-Images/campus-15-food-court-bhubaneshwar-food-court-6kzsnjb1d1.jpg",
-      name: "FOOD COURT 4",
-      campus: "Campus: 16",
-      landmark: "Landmark: Opposite Library",
-    },
-  ]);
+  const [foodCourts, setFoodCourts] = useState<FoodCourt[]>([]);
+
+  useEffect(() => {
+    const getFoodCourts = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/user/fetchFCs', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'token': token || "",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch food courts');
+        }
+
+        const data = await response.json();
+        setFoodCourts(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getFoodCourts();
+  }, [token]);
 
   const handleFoodCourtSelect = (foodCourt: {
     name: any;

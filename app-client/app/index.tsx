@@ -1,18 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "@/assets/styles/IndexStyle.css";
 import {
-  Image,
   TouchableOpacity,
   View,
   Text,
   ImageBackground,
-  StyleSheet,
 } from "react-native";
 import { useRouter } from "expo-router";
 import Navbar from "@/components/Navbar";
+import { jwtDecode } from 'jwt-decode';
 
 export default function Index() {
   const router = useRouter();
+  const [layoutReady, setLayoutReady] = useState(false);
+
+  useEffect(()=>{
+    const toggleLayoutReady = () => {
+      setLayoutReady(true);
+    }
+    toggleLayoutReady();
+  }, [])
+
+  useEffect(()=>{
+    if(!layoutReady) return;
+    const checkToken = () => {
+      const token = localStorage.getItem("token");
+      if(!token) {
+        return;
+      }
+      const tokenData = jwtDecode(token);
+      if(tokenData.usertype === "user") {
+        router.push('/food_courts');
+      }
+      else {
+        localStorage.removeItem("token");
+      }
+    }
+    checkToken();
+  }, [layoutReady])
 
   const handleGetStarted = () => {
     router.push("/register");
