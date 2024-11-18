@@ -5,8 +5,13 @@
     --accent-green-color: #003400;
     --accent-white-color: #E3E9E5;
 }
+#fc_container{
+    background-color: var(--primary-color);
+    height: 100%;
+    width: 100%;
+  }
 
-#FC-maincontainer{
+#fc_maincontainer{
     background-color: var(--primary-color);
     padding: 10%;
     display: flex;
@@ -16,23 +21,61 @@
 
 }
 
-#FC-searchcontainer{
+#fc_searchContainer{
     background-color: var(--accent-white-color);
     border-radius: 10px;
-}
-
-#FC-listcontainer {
+    padding: 10px;
+    margin-right: 2%;
+    margin-left: 2%;
     display: flex;
-    flex-wrap: wrap;  /* Allow wrapping */
-    gap: 10px;  /* A specific gap for clarity */
-    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5%;
 }
 
-#FC-card {
-    background-color: var(--accent-white-color);
-    border-color: var(--accent-green-color);
-    border-width: 1px;
-    border-radius: 30px;
-    padding: 10px;  /* Optional: Add padding inside cards */
-    margin: 5px;  /* Optional: Add margin around each card */
+
+#fc_searchInput {
+    flex: 1;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--accent-green-color);
+  }
+
+#fc_listcontainer {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10%; 
+   
+}
+
+#fc_card {
+    background-color:var(--secondary-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 2%;
+    margin-right: 3%;
+    margin-left: 3%;
+    display: grid;
+    align-items: center;
+}
+
+#fc_cardImage {
+    width: 65;
+    height: 75;
+    border-radius: 10;
+    margin-right: 15,
+}
+
+#fc_cardTitle {
+    font-size: 20;
+    color: var(--accent-white-color);
+    font-weight: "bold";
+    margin-bottom: 4;
+}
+
+#cardText {
+    font-size: 16;
+    color: var(--accent-green-color);
+    margin-bottom: 2;
 }

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Modal, FlatList } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Modal, FlatList, Alert } from 'react-native';
 import Navbar from '@/components/Navbar';
 import "@/assets/styles/checkout.css";
 import { router, useLocalSearchParams } from 'expo-router';
 
 export default function Checkout() {
-  const { selectedItems } = useLocalSearchParams();  
+  const { selectedItems, name, campus, landmark } = useLocalSearchParams();
   const [items, setItems] = useState<{ name: string; quantity: number; price: string }[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [etaOptions, setEtaOptions] = useState<string[]>([]);
@@ -46,29 +46,37 @@ export default function Checkout() {
 
   const totalAmount = items.reduce((total, item) => total + item.quantity * parseFloat(item.price), 0);
 
-  const handleEtaSelect = (time: React.SetStateAction<string>) => {
+  const handleEtaSelect = (time: string) => {
     setSelectedEta(time);
     setIsDropdownOpen(false);
   };
 
   const handlePaymentNavigation = () => {
+    if (!selectedEta) {
+      Alert.alert("ETA Required", "Please select an ETA before proceeding to payment.");
+      return;
+    }
 
-      router.push({
+  
+    router.push({
       pathname: '/payment',
       params: { 
         selectedItems: JSON.stringify(items), 
         totalAmount: totalAmount.toFixed(2), 
-        eta: selectedEta 
+        eta: selectedEta,
+        name, 
+        campus, 
+        landmark,
       },
     });
-};
+  };
 
   return (
     <View id="container">
       <Navbar />
-      <Text id="foodCourtDetails">Food Court 1</Text>
-      <Text>Campus: 17</Text>
-      <Text>Landmark: Next to mba garden</Text>
+      <Text id="foodCourtDetails">{name}</Text>
+      <Text>Campus: {campus}</Text>
+      <Text>Landmark: {landmark}</Text>
       <Text id="mapLink">Map Location</Text>
 
       <View id="tableContainer">
@@ -89,7 +97,7 @@ export default function Checkout() {
         </View>
       </View>
 
-      <Text id="totalText">Cart Total: Rs.{totalAmount.toFixed(2)} </Text>
+      <Text id="totalText">Cart Total: Rs.{totalAmount.toFixed(2)}</Text>
 
       <TextInput
         id="phoneInput"
@@ -128,4 +136,3 @@ export default function Checkout() {
     </View>
   );
 }
-

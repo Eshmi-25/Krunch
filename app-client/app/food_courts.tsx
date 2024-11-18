@@ -11,6 +11,7 @@ import {
 import Navbar from "@/components/Navbar";
 import "@/assets/styles/FoodCourts.css";
 import "@/assets/images/QC_FC.jpg";
+import { router } from 'expo-router';
 
 export default function FoodCourtList() {
   const [searchText, setSearchText] = useState("");
@@ -23,55 +24,68 @@ export default function FoodCourtList() {
       landmark: "Landmark: QC 1-4",
     },
     {
+      img: "https://nsinha025.github.io/FC-Images/campus-15-food-court-bhubaneshwar-food-court-6kzsnjb1d1.jpg",
       name: "FOOD COURT 2",
       campus: "Campus: 16",
       landmark: "Landmark: Opposite Library",
     },
     {
+      img: "https://nsinha025.github.io/FC-Images/campus-15-food-court-bhubaneshwar-food-court-6kzsnjb1d1.jpg",
       name: "FOOD COURT 3",
       campus: "Campus: 16",
       landmark: "Landmark: Opposite Library",
     },
     {
+      img: "https://nsinha025.github.io/FC-Images/campus-15-food-court-bhubaneshwar-food-court-6kzsnjb1d1.jpg",
       name: "FOOD COURT 4",
       campus: "Campus: 16",
       landmark: "Landmark: Opposite Library",
     },
   ]);
 
+  const handleFoodCourtSelect = (foodCourt: { name: any; campus: any; landmark: any }) => {
+    router.push({
+      pathname: '/item_list',
+      params: {
+        name: foodCourt.name,
+        campus: foodCourt.campus,
+        landmark: foodCourt.landmark,
+      },
+    });
+  };
+
   return (
-    <View
-      style={{
-        backgroundColor: "#B3D4C3",
-        height: "100%",
-      }}
-    >
+    <View id="fc_container">
+      <View>
       <Navbar />
-      <View id="FC-maincontainer">
-        <View id="FC-searchcontainer">
+      </View>
+      <View id="fc_mainContainer">
+      
+        <View id="fc_searchContainer">
           <TextInput
-            style={styles.searchInput}
-            placeholder="Search"
+            id="fc_searchInput"
+            placeholder="Search Food Courts"
             value={searchText}
             onChangeText={setSearchText}
           />
         </View>
 
-        {/* Food Court Listings */}
-        <ScrollView id="FC-listcontainer">
+    
+        <ScrollView id="fc_listContainer">
           {foodCourts.map((foodCourt, index) => (
-            <TouchableOpacity key={index} id="FC-card">
-              <Image 
-                source={{ uri: foodCourt.img}}
-                style={{
-                  width: 75,
-                  height: 75,
-                }}
-              />
-              <Text style={styles.cardTitle}>{foodCourt.name}</Text>
-              <Text style={styles.cardText}>{foodCourt.campus}</Text>
-              <Text style={styles.cardText}>{foodCourt.landmark}</Text>
-              <Text style={styles.mapText}>Map Location</Text>
+            <TouchableOpacity key={index} id="fc_card" onPress={() => handleFoodCourtSelect(foodCourt)}>
+              {foodCourt.img && (
+                <Image 
+                  source={{ uri: foodCourt.img }}
+                  id="fc_cardImage"
+                />
+              )}
+              <View id="fc_cardContent">
+                <Text id="fc_cardTitle">{foodCourt.name}</Text>
+                <Text id="fc_cardText">{foodCourt.campus}</Text>
+                <Text id="fc_cardText">{foodCourt.landmark}</Text>
+                <Text id="fc_mapText">Map Location</Text>
+              </View>
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -80,42 +94,3 @@ export default function FoodCourtList() {
   );
 }
 
-const styles = StyleSheet.create({
-  title: {
-    fontFamily: "Bebas",
-    color: "#1BCF5A",
-    fontSize: 50,
-    marginTop: "-20%",
-    marginBottom: "10%",
-    textAlign: "center",
-  },
-  searchInput: {
-    flex: 1,
-    fontSize: 18,
-    paddingHorizontal: 10,
-    color: "#003400",
-  },
-
-  card: {
-    backgroundColor: "#0B6633",
-    borderRadius: 10,
-    padding: 20,
-    marginVertical: "1%",
-  },
-  cardTitle: {
-    fontSize: 22,
-    color: "white",
-    fontFamily: "Bebas",
-  },
-  cardText: {
-    fontSize: 16,
-    color: "white",
-    marginTop: "1%",
-  },
-  mapText: {
-    fontSize: 16,
-    color: "#B3D4C3",
-    textDecorationLine: "underline",
-    marginTop: "1%",
-  },
-});

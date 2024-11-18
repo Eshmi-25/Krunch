@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import "@/assets/styles/itemlist.css";
 import Navbar from '@/components/Navbar';
-import { router } from 'expo-router';
+import { router, useRouter,useLocalSearchParams } from 'expo-router';
 
 export default function FoodCourtMenu() {
   const [searchText, setSearchText] = useState('');
@@ -27,6 +27,13 @@ export default function FoodCourtMenu() {
     { id: 18, name: 'Spring Rolls', price: '90.00', quantity: 0 },
   ]);
 
+  const params = useLocalSearchParams();
+  const selectedFoodCourt = {
+    name: params.name,
+    campus: params.campus,
+    landmark: params.landmark,
+  };
+
   const incrementItem = (id: number) => {
     setItems(items.map(item => 
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
@@ -44,10 +51,13 @@ export default function FoodCourtMenu() {
     
     router.push({
       pathname: '/checkout',
-      params: { selectedItems: JSON.stringify(selectedItems) }
+      params: { 
+        selectedItems: JSON.stringify(selectedItems),
+        name: selectedFoodCourt.name,
+        campus: selectedFoodCourt.campus,
+        landmark: selectedFoodCourt.landmark,
+      }
     });
-
-    
   };
   
 
@@ -57,7 +67,10 @@ export default function FoodCourtMenu() {
       <Navbar />
     </View>
     <View id="IL-maincontainer">
-        <Text id="IL-foodCourtDetails">Food Court Address: <Text id="IL-mapLink">Map Link</Text></Text>
+        <Text id="IL-foodCourtDetails">Food Court Address: {selectedFoodCourt.name}</Text>
+          <Text>{selectedFoodCourt.campus}</Text>
+          <Text>{selectedFoodCourt.landmark}</Text>
+        <Text id="IL-mapLink">Map Link</Text>
         <View id="IL-searchContainer">
           <TextInput
             id="IL-searchInput"
