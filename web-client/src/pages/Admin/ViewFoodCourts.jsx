@@ -61,7 +61,8 @@ const ViewFoodCourts = () => {
         </div>
         <div className="mt-10 text-center">
           {foodCourts.map((foodCourt, idx) => (
-            <FoodCourtList key={idx} foodCourt={foodCourt} />
+            <FoodCourtList key={idx} foodCourt={foodCourt} setFoodCourts={setFoodCourts} />
+            
           ))}
         </div>
       </div>
