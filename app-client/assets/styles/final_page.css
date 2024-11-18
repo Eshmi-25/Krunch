@@ -1,82 +1,81 @@
 :root {
- 
-    --primary-color: #B3D4C3;
-    --secondary-color: #016B43;
-    --tertiary-color: #1BCF5A;
-    --accent-green-color: #003400;
-    --accent-white-color: #E3E9E5;
+  --primary-color: #b3d4c3;
+  --secondary-color: #016b43;
+  --tertiary-color: #1bcf5a;
+  --accent-green-color: #003400;
+  --accent-white-color: #e3e9e5;
 }
 
 #fp_maincontainer {
-    background-color: var(--primary-color);
-    height: 100%;
-    width: 100%;
+  background-color: var(--primary-color);
+  height: 100%;
+  width: 100%;
 }
 #fp_container {
-    background-color: var(--primary-color) ;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20%;
-    
+  background-color: var(--primary-color);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20%;
 }
 
-
 #fp_foodCourtTitle {
-    font-size: x-large;
-    color: var(--accent-green-color);
-    margin-bottom: 2%;
-  }
+  font-size: x-large;
+  color: var(--accent-green-color);
+  margin-bottom: 2%;
+}
 
 #fp_foodCourtDetails {
-    font-size: large;
-    color: var(--accent-green-color);
+  font-size: large;
+  color: var(--accent-green-color);
 }
 
 #fp_mapLink {
-    font-size: large;
-    color: var(--secondary-color);
-    text-decoration-line: underline; 
+  font-size: large;
+  color: var(--secondary-color);
+  text-decoration-line: underline;
 }
 
-#fp_tableContainer{
-    border: 2px solid var(--accent-green-color);
-    border-radius: 5px;
-    padding: 2%;
-    margin-bottom: 10%;
-    overflow: hidden;
-    background-color: var(--accent-white-color);
-    margin-top: 10%;
+#fp_tableContainer {
+  border: 2px solid var(--accent-green-color);
+  border-radius: 5px;
+  padding: 2%;
+  margin-bottom: 10%;
+  overflow: hidden;
+  background-color: var(--accent-white-color);
+  margin-top: 10%;
 }
 
-#fp_tableHeader{
+#fp_tableHeader {
   display: grid;
   grid-template-columns: 1.7fr 1.5fr 1fr;
   background-color: var(--accent-green-color);
   padding: 1%;
 }
 
-#fp_tableText{
-    font-size: medium;
-    font-weight: bold;
-    color: var(--accent-white-color);
+#fp_tableText {
+  font-size: medium;
+  font-weight: bold;
+  color: var(--accent-white-color);
 }
 
-#fp_itemText{
-    font-size: medium;
-    color: var(--accent-green-color);
+#fp_itemText {
+  font-size: medium;
+  color: var(--accent-green-color);
 }
 
-#fp_tableRow{
-    display: grid;
-    grid-template-columns: 2fr 1.5fr 1fr;
+#fp_tableRow {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr;
 }
 
-#pay_pickuptime, #totalamt, #otpText{
+#pay_pickuptime,
+#totalamt,
+#otpText {
   font-size: larger;
   color: var(--accent-green-color);
 }
 
 #orderplaced {
-    font-size: x-large;
-    color: var(--accent-green-color);   
+  font-size: x-large;
+  color: var(--accent-green-color);
 }

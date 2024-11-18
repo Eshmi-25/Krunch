@@ -1,5 +1,5 @@
 import React from "react";
-import "@/assets/styles/IndexStyle.css"
+import "@/assets/styles/IndexStyle.css";
 import {
   Image,
   TouchableOpacity,
@@ -30,24 +30,27 @@ export default function Index() {
         }}
       >
         <View id="imagecover"></View>
-          <View id="content-container">
+        <View id="content-container">
           <View
-          style={{
-            display: "flex",
-            justifyContent: "flex-start",
-          }}>
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+            }}
+          >
             <Navbar />
           </View>
           <View id="text-container">
             <View>
-              <Text id="white-text"
+              <Text
+                id="white-text"
                 style={{
-                  fontSize: 40
+                  fontSize: 40,
                 }}
               >
                 ORDER FROM THE NEAREST{" "}
               </Text>
-              <Text id="green-text"
+              <Text
+                id="green-text"
                 style={{
                   fontSize: 50,
                 }}
@@ -64,4 +67,3 @@ export default function Index() {
     </View>
   );
 }
-

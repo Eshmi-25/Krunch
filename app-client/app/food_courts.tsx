@@ -11,7 +11,7 @@ import {
 import Navbar from "@/components/Navbar";
 import "@/assets/styles/FoodCourts.css";
 import "@/assets/images/QC_FC.jpg";
-import { router } from 'expo-router';
+import { router } from "expo-router";
 
 export default function FoodCourtList() {
   const [searchText, setSearchText] = useState("");
@@ -43,9 +43,13 @@ export default function FoodCourtList() {
     },
   ]);
 
-  const handleFoodCourtSelect = (foodCourt: { name: any; campus: any; landmark: any }) => {
+  const handleFoodCourtSelect = (foodCourt: {
+    name: any;
+    campus: any;
+    landmark: any;
+  }) => {
     router.push({
-      pathname: '/item_list',
+      pathname: "/item_list",
       params: {
         name: foodCourt.name,
         campus: foodCourt.campus,
@@ -57,10 +61,9 @@ export default function FoodCourtList() {
   return (
     <View id="fc_container">
       <View>
-      <Navbar />
+        <Navbar />
       </View>
       <View id="fc_mainContainer">
-      
         <View id="fc_searchContainer">
           <TextInput
             id="fc_searchInput"
@@ -70,14 +73,24 @@ export default function FoodCourtList() {
           />
         </View>
 
-    
         <ScrollView>
           {foodCourts.map((foodCourt, index) => (
-            <TouchableOpacity key={index} id="fc_card" onPress={() => handleFoodCourtSelect(foodCourt)}>
+            <TouchableOpacity
+              key={index}
+              id="fc_card"
+              onPress={() => handleFoodCourtSelect(foodCourt)}
+            >
               {foodCourt.img && (
-                <Image 
-                  source={{ uri: "https://nsinha025.github.io/FC-Images/campus-15-food-court-bhubaneshwar-food-court-6kzsnjb1d1.jpg" }}
-                  style={{ width: 65, height: 75, borderRadius: 10, backgroundColor: '#ddd' }}
+                <Image
+                  source={{
+                    uri: "https://nsinha025.github.io/FC-Images/campus-15-food-court-bhubaneshwar-food-court-6kzsnjb1d1.jpg",
+                  }}
+                  style={{
+                    width: 65,
+                    height: 75,
+                    borderRadius: 10,
+                    backgroundColor: "#ddd",
+                  }}
                 />
               )}
               <View id="fc_cardContent">
@@ -85,16 +98,11 @@ export default function FoodCourtList() {
                 <Text id="fc_cardText">{foodCourt.campus}</Text>
                 <Text id="fc_cardText">{foodCourt.landmark}</Text>
                 <Text id="fc_mapText">Map Location</Text>
-                
               </View>
-              
-              
             </TouchableOpacity>
-            
           ))}
         </ScrollView>
       </View>
     </View>
   );
 }
-
