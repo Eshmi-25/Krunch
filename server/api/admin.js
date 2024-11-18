@@ -132,7 +132,7 @@ router.route("/order/:order_id").get(verifyAdmin, async (req, res) => {
 // Get list of all food courts
 router.route("/foodcourts").get(verifyAdmin, async (req, res) => {
   try {
-    const foodCourts = await FoodCourt.find();
+    const foodCourts = await FoodCourt.findAll();
     res.status(200).send(foodCourts);
   } catch (error) {
     console.error("Error fetching food courts:", error);
