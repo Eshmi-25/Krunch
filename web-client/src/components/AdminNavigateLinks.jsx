@@ -13,6 +13,7 @@ const AdminNavigateLinks = ({navOption1, navLink1, navOption2, navLink2}) => {
     }
 
     const handleLogout = () => {
+        localStorage.removeItem("token");
         nav("/");
     }
   return (

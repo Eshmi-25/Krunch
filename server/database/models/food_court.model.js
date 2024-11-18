@@ -19,6 +19,10 @@ const FoodCourt = connection.define('food_court', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    image_link: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    }
 })
 
 module.exports = FoodCourt;
