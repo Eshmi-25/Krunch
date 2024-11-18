@@ -71,13 +71,13 @@ export default function FoodCourtList() {
         </View>
 
     
-        <ScrollView id="fc_listContainer">
+        <ScrollView>
           {foodCourts.map((foodCourt, index) => (
             <TouchableOpacity key={index} id="fc_card" onPress={() => handleFoodCourtSelect(foodCourt)}>
               {foodCourt.img && (
                 <Image 
-                  source={{ uri: foodCourt.img }}
-                  id="fc_cardImage"
+                  source={{ uri: "https://nsinha025.github.io/FC-Images/campus-15-food-court-bhubaneshwar-food-court-6kzsnjb1d1.jpg" }}
+                  style={{ width: 65, height: 75, borderRadius: 10, backgroundColor: '#ddd' }}
                 />
               )}
               <View id="fc_cardContent">
@@ -85,8 +85,12 @@ export default function FoodCourtList() {
                 <Text id="fc_cardText">{foodCourt.campus}</Text>
                 <Text id="fc_cardText">{foodCourt.landmark}</Text>
                 <Text id="fc_mapText">Map Location</Text>
+                
               </View>
+              
+              
             </TouchableOpacity>
+            
           ))}
         </ScrollView>
       </View>

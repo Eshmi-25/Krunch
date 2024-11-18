@@ -33,36 +33,34 @@ export default function Payment() {
       });
   };
     return (
-        <View style={{ flex: 1 }}>
-            <View id="main_container" >
+            <View id="pay_main_container" >
                 <View >
-                    <Navbar />
+                    <Navbar/>
                 </View>
-
+            <View id="pay_container">
                 <View>
-                    <Text id="foodCourtDetails">Food Court 1</Text>
-                    <Text>{name}</Text>
-                    <Text>{campus}</Text>
-                    <Text>{landmark}</Text>
-                    <Text id="mapLink">Map Location</Text>
+                    <Text id="pay_foodCourtDetails">{name}</Text>
+                    <Text id="pay_fcinfo">{campus}</Text>
+                    <Text id="pay_fcinfo">{landmark}</Text>
+                    <Text id="pay_mapLink">Map Location</Text>
                 </View>
 
-                <Text id="payment_amount">To Pay: Rs. {totalAmount}</Text>
+                <Text id="pay_payment_amount">To Pay: Rs. {totalAmount}</Text>
 
-                <TouchableOpacity id="button2">
-                    <Text id="buttonText">Pay via UPI</Text>
+                <TouchableOpacity id="pay_button2">
+                    <Text id="pay_buttonText">Pay via UPI</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity id="button2">
-                    <Text id="buttonText">Pay via Debit Card</Text>
+                <TouchableOpacity id="pay_button2">
+                    <Text id="pay_buttonText">Pay via Debit Card</Text>
                 </TouchableOpacity>
 
-                <View id="buttonContainer">
-                    <TouchableOpacity id="button_Cancel" onPress={() => router.push('/item_list')}>
-                        <Text id="buttonText">Cancel</Text>
+                <View id="pay_buttonContainer">
+                    <TouchableOpacity id="pay_button_Cancel" onPress={() => router.push('/item_list')}>
+                        <Text id="pay_buttonText">Cancel</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity id="button_Proceed" onPress={proceedpayment}>
-                        <Text id="buttonText">Proceed</Text>
+                    <TouchableOpacity id="pay_button_Proceed" onPress={proceedpayment}>
+                        <Text id="pay_buttonText">Proceed</Text>
                     </TouchableOpacity>
                 </View>
             </View>

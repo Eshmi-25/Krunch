@@ -67,7 +67,7 @@ export default function FoodCourtMenu() {
       <Navbar />
     </View>
     <View id="IL-maincontainer">
-        <Text id="IL-foodCourtDetails">Food Court Address: {selectedFoodCourt.name}</Text>
+        <Text id="IL-foodCourtDetails">{selectedFoodCourt.name}</Text>
           <Text>{selectedFoodCourt.campus}</Text>
           <Text>{selectedFoodCourt.landmark}</Text>
         <Text id="IL-mapLink">Map Link</Text>
