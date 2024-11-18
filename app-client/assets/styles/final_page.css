@@ -7,32 +7,76 @@
     --accent-white-color: #E3E9E5;
 }
 
-#container {
-    flex: 1;
+#fp_maincontainer {
+    background-color: var(--primary-color);
+    height: 100%;
+    width: 100%;
+}
+#fp_container {
     background-color: var(--primary-color) ;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 1%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20%;
     
 }
 
 
-#foodCourtTitle {
-    font-size: 20px;
-    font-weight: bold;
+#fp_foodCourtTitle {
+    font-size: x-large;
     color: var(--accent-green-color);
-    margin-bottom: 5px;
+    margin-bottom: 2%;
   }
 
-#tableContainer{
-    font-size: 20px;
-    font-style: bold;
-    justify-content: center;
+#fp_foodCourtDetails {
+    font-size: large;
+    color: var(--accent-green-color);
 }
 
-#itemText{
+#fp_mapLink {
+    font-size: large;
+    color: var(--secondary-color);
+    text-decoration-line: underline; 
+}
+
+#fp_tableContainer{
+    border: 2px solid var(--accent-green-color);
+    border-radius: 5px;
+    padding: 2%;
+    margin-bottom: 10%;
+    overflow: hidden;
+    background-color: var(--accent-white-color);
+    margin-top: 10%;
+}
+
+#fp_tableHeader{
+  display: grid;
+  grid-template-columns: 1.7fr 1.5fr 1fr;
+  background-color: var(--accent-green-color);
+  padding: 1%;
+}
+
+#fp_tableText{
+    font-size: medium;
+    font-weight: bold;
     color: var(--accent-white-color);
 }
-#tableRow{
-    background-color: var(--accent-green-color);
+
+#fp_itemText{
+    font-size: medium;
+    color: var(--accent-green-color);
+}
+
+#fp_tableRow{
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr;
+}
+
+#pay_pickuptime, #totalamt, #otpText{
+  font-size: larger;
+  color: var(--accent-green-color);
+}
+
+#orderplaced {
+    font-size: x-large;
+    color: var(--accent-green-color);   
 }

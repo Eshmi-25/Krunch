@@ -28,7 +28,10 @@ export default function Payment() {
         params: { 
           selectedItems: JSON.stringify(items), 
           totalAmount: totalAmount, 
-          eta: eta 
+          eta: eta ,
+          name, 
+         campus, 
+         landmark,
         },
       });
   };

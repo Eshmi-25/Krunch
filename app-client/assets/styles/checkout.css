@@ -15,12 +15,11 @@
   background-color: var(--primary-color);
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 50px;
+  padding-top: 20%;
 }
 
 #CH-foodCourtDetails {
-  font-size: larger;
-  font-weight: bold;
+  font-size: x-large;
   color: var(--accent-green-color);
   margin-bottom: 2%;
 }
@@ -31,11 +30,10 @@
 }
 
 #CH-mapLink {
-  font-size: medium;
-  color:var(--secondary-color);
-  text-decoration: underline;
-  margin-bottom: 10%;
-  cursor: pointer;
+  font-size: large;
+  color: var(--secondary-color);
+  text-decoration-line: underline; 
+  
 }
 
 /* Table styling */
@@ -46,7 +44,7 @@
   margin-bottom: 10%;
   overflow: hidden;
   background-color: var(--accent-white-color);
-
+  margin-top: 10%;
 
 }
 
@@ -73,7 +71,8 @@
   display: grid;
   grid-template-columns: 2fr 1.5fr 1fr;
 }
-#CH-itemText, #CH-tableRow{
+
+#CH-itemText{
 
   font-size: medium;
   color: var(--accent-green-color);
