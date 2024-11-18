@@ -1,15 +1,69 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HeadBanner from "../../components/HeadBanner";
 import AdminNavigateLinks from "../../components/AdminNavigateLinks";
 import { IoMdAdd } from "react-icons/io";
 import { GrPowerReset } from "react-icons/gr";
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import axios from "axios";
 
 const EditFoodCourt = () => {
     const [adminName, setAdminName] = useState("Admin");
     const [subtitle, setSubtitle] = useState("Mr/Ms/Mrs. " + adminName);
     const { id } = useParams();
+    const [fcLandmark, setLandmark] = useState("");
+    const [fcCampus, setCampus] = useState("");
+    const [fcMapLink, setMapLink] = useState("");
     console.log(id)
+
+    useEffect(() => {
+      const fetchFoodCourtDetails = async () => {
+        const token = localStorage.getItem("token");
+        try {
+          const response = await axios.get(`http://localhost:3000/admin/editFC/${id}`, {
+            headers: {
+              token: token,
+            },
+          });
+          const { landmark, campus, mapLink } = response.data;
+          setLandmark(landmark);
+          setCampus(campus);
+          setMapLink(mapLink);
+        } catch (error) {
+          console.error("Error fetching food court details:", error);
+        }
+      };
+  
+      fetchFoodCourtDetails();
+    }, [id]);
+
+    const handleSubmit = async (e) => {
+      const token = localStorage.getItem("token");
+      e.preventDefault();
+      try {
+        const response = await axios.put(
+          `http://localhost:3000/admin/editFC/${id}`,
+          {
+            landmark: fcLandmark,
+            campus: fcCampus,
+            map_Link: fcMapLink,
+          },
+          {
+            headers: {
+              token: token,
+            },
+          }
+        );
+        alert(
+          `Edited Successfully`
+        );
+        setCampus("");
+        setMapLink("");
+        setLandmark("");
+        // Optionally, redirect or show a success message
+      } catch (error) {
+        console.error("Error updating food court:", error);
+      }
+    };
 
     return (
       <div className="bg-primary min-h-screen min-w-screen flex flex-col p-10">
@@ -21,7 +75,7 @@ const EditFoodCourt = () => {
             navLink2="/addNewItem"
           />
         </div>
-        <form action="" className="flex justify-center">
+        <form onSubmit = {handleSubmit} action="" className="flex justify-center">
         <div className="bg-secondary text-accentwhite  w-1/3 cabin mt-6 rounded-md py-5 px-10 ">
           <div className="grid grid-rows-3 gap-4 mt-5">
             <div>
@@ -29,7 +83,9 @@ const EditFoodCourt = () => {
               <input required
                 type="text"
                 name="ca_no"
-                id="ca_no"
+                id="fcCampus"
+                value={fcCampus}
+                onChange={(e) => setCampus(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-tertiary text-accentgreen bg-accentwhite cabin"
               />
             </div>
@@ -39,7 +95,9 @@ const EditFoodCourt = () => {
               <input required
                 type="text"
                 name="land_mark"
-                id="land_mark"
+                id="fcLandmark"
+                value={fcLandmark}
+                onChange={(e) => setLandmark(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-tertiary text-accentgreen bg-accentwhite cabin"
               />
             </div>
@@ -48,7 +106,9 @@ const EditFoodCourt = () => {
               <input required
                 type="text"
                 name="map_link"
-                id="map_link"
+                id="fcMapLink"
+                value={fcMapLink}
+                onChange={(e) => setMapLink(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-tertiary text-accentgreen bg-accentwhite cabin"
               />
             </div>
@@ -63,7 +123,16 @@ const EditFoodCourt = () => {
                 Add
               </div>
             </button>
-            <button className="bg-tertiary text-accentgreen shadow-md hover:bg-accentgreen hover:text-accentwhite p-2 rounded-md">
+            <button 
+            type="reset"
+            className="bg-tertiary text-accentgreen shadow-md hover:bg-accentgreen hover:text-accentwhite p-2 rounded-md"
+            onClick={() => {
+              setLandmark("");
+              setCampus("");
+              setMapLink("");
+            }}
+          >
+            
             <div className="flex items-center gap-2">
                 <GrPowerReset />
                 Reset
