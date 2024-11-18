@@ -31,12 +31,12 @@ export default function Checkout() {
       const endTime = new Date();
       endTime.setHours(19, 0, 0, 0);
 
-      while (startTime <= endTime) {
+     // while (startTime <= endTime) {
         const hours = startTime.getHours().toString().padStart(2, '0');
         const minutes = startTime.getMinutes().toString().padStart(2, '0');
         intervals.push(`${hours}:${minutes}`);
         startTime.setMinutes(startTime.getMinutes() + 15);
-      }
+     // }
 
       setEtaOptions(intervals);
     };
@@ -72,41 +72,44 @@ export default function Checkout() {
   };
 
   return (
-    <View id="container">
+    <View id="CH-maincontainer">
+      <View>
       <Navbar />
-      <Text id="foodCourtDetails">{name}</Text>
-      <Text>Campus: {campus}</Text>
-      <Text>Landmark: {landmark}</Text>
-      <Text id="mapLink">Map Location</Text>
+      </View>
+      <View id="CH-container">
+      <Text id="CH-foodCourtDetails">{name}</Text>
+      <Text id="CH-details">Campus: {campus}</Text>
+      <Text id="CH-details">Landmark: {landmark}</Text>
+      <Text id="CH-mapLink">Map Location</Text>
 
-      <View id="tableContainer">
-        <View id="tableHeader" style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <Text id="tableText">ITEM</Text>
-          <Text id="tableText">QTY</Text>
-          <Text id="tableText">PRICE</Text>
+      <View id="CH-tableContainer">
+        <View id="CH-tableHeader">
+          <Text id="CH-tableText">ITEM</Text>
+          <Text id="CH-tableText">QTY</Text>
+          <Text id="CH-tableText">PRICE</Text>
         </View>
 
         <View>
           {items.map((item, index) => (
-            <View key={index} id="tableRow" style={{ flexDirection: "row" }}>
-              <Text id="itemText">{item.name}</Text>
-              <Text id="itemText">{item.quantity}</Text>
-              <Text id="itemText">Rs.{parseFloat(item.price).toFixed(2)}</Text>
+            <View id="CH-itemCont">
+              <Text id="CH-itemText">{item.name}</Text>
+              <Text id="CH-itemText">{item.quantity}</Text>
+              <Text id="CH-itemText">Rs.{parseFloat(item.price).toFixed(2)}</Text>
             </View>
           ))}
         </View>
       </View>
 
-      <Text id="totalText">Cart Total: Rs.{totalAmount.toFixed(2)}</Text>
+      <Text id="CH-totalText">Cart Total: Rs.{totalAmount.toFixed(2)}</Text>
 
       <TextInput
-        id="phoneInput"
+        id="CH-phoneInput"
         placeholder="Phone Number"
         keyboardType="numeric"
       />
 
-      <TouchableOpacity id="etaButton" onPress={() => setIsDropdownOpen(!isDropdownOpen)}>
-        <Text id="buttonText">{selectedEta ? `ETA: ${selectedEta}` : 'Select ETA ▼'}</Text>
+      <TouchableOpacity id="CH-etaButton" onPress={() => setIsDropdownOpen(!isDropdownOpen)}>
+        <Text id="CH-buttonText">{selectedEta ? `ETA: ${selectedEta}` : 'Select ETA ▼'}</Text>
       </TouchableOpacity>
 
       <Modal
@@ -122,7 +125,7 @@ export default function Checkout() {
               keyExtractor={(item) => item}
               renderItem={({ item }) => (
                 <TouchableOpacity onPress={() => handleEtaSelect(item)}>
-                  <Text id="item">{item}</Text>
+                  <Text id="CH-item">{item}</Text>
                 </TouchableOpacity>
               )}
             />
@@ -130,9 +133,10 @@ export default function Checkout() {
         </View>
       </Modal>
 
-      <TouchableOpacity id="paymentButton" onPress={handlePaymentNavigation}>
-        <Text id="paymentButtonText">Payment ▶</Text>
+      <TouchableOpacity id="CH-paymentButton" onPress={handlePaymentNavigation}>
+        <Text id="CH-paymentButtonText">Payment ▶</Text>
       </TouchableOpacity>
+    </View>
     </View>
   );
 }

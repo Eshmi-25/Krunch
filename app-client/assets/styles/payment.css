@@ -8,36 +8,48 @@
     --accent-white-color: #E3E9E5;
 }
 
-#main_container {
-    flex: 1;
-    background-color: var(--primary-color) ;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 1%;
+#pay_main_container {
+    background-color: var(--primary-color);
+    height: 100%;
+    width: 100%;
 }
 
-#foodCourtDetails {
-    font-size: 25px;
+#pay_container {
+    background-color: var(--primary-color);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20%;
+}
+
+#pay_foodCourtDetails {
+    font-size: x-large;
     color: var(--accent-green-color);
-    margin-bottom: 20px;
+    margin-bottom: 2%;
 }
 
-#mapLink {
-    color: var(--tertiary-color);
+#pay_fcinfo{
+    font-size: large;
+    color: var(--accent-green-color);
+}
+
+#pay_mapLink {
+    font-size: large;
+    color: var(--secondary-color);
     text-decoration-line: underline; 
 }
 
-#payment_amount {
-    font-size: 25px;
+#pay_payment_amount {
+    font-size: x-large;
     font-weight: bold; 
-    margin-top: 20%;
+    margin-top: 25%;
     text-align: center; 
+    color: var(--accent-green-color);
 }
 
 
-#button2 {
+#pay_button2 {
     background-color: var(--secondary-color);
-    padding: 15px;
+    padding: 5%;
     border-radius: 5px;
     margin-bottom: 5%;
     margin-top: 5%;
@@ -46,22 +58,22 @@
     width: 80%;
 }
 
-#buttonText {
+#pay_buttonText {
     color:var(--accent-white-color);
     text-align: center;
-    font-size: 20px;
+    font-size: large;
 }
 
-#buttonContainer{
+#pay_buttonContainer{
     width: 40%;
     margin-top: 5%;
     justify-content: space-between;
     flex-direction: row;
 }
 
-#button_Cancel{
+#pay_button_Cancel{
     background-color: var(--secondary-color);
-    padding: 15px;
+    padding: 10%;
     border-radius: 5px;
     margin-bottom: 5%;
     margin-top: 5%;
@@ -70,13 +82,13 @@
     width: 80%;
 }
 
-#button_Proceed{
+#pay_button_Proceed{
     background-color: var(--secondary-color);
-    padding: 15px;
+    padding: 10%;
     border-radius: 5px;
     margin-bottom: 5%;
     margin-top: 5%;
     margin-left: 40%;
     justify-content: center;
-    width: 80%;
+    
 }
