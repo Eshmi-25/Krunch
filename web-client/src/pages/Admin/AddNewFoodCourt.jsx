@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeadBanner from "../../components/HeadBanner";
 import AdminNavigateLinks from "../../components/AdminNavigateLinks";
 import { IoMdAdd } from "react-icons/io";
 import { GrPowerReset } from "react-icons/gr";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const AddNewFoodCourt = () => {
-  const [adminName, setAdminName] = useState("Admin");
-  const [subtitle, setSubtitle] = useState("Mr/Ms/Mrs. " + adminName);
+  const [adminName, setAdminName] = useState("");
   const [fcNo, setFcNo] = useState(0);
   const [landmark, setLandmark] = useState("");
   const [campus, setCampus] = useState("");
   const [mapLink, setMapLink] = useState("");
   const [imageLink, setImageLink] = useState("");
+
+  useEffect(()=>{
+    const updateAdminName = () => {
+      const token = localStorage.getItem("token");
+      const tokenData = jwtDecode(token);
+      setAdminName(tokenData.name);
+    }
+    updateAdminName();
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,13 +53,14 @@ const AddNewFoodCourt = () => {
       setMapLink("");
     } catch (error) {
       console.error("Error adding food court:", error);
+      alert("Error adding foodcourt");
     }
   };
 
   return (
     <div className="bg-primary min-h-screen min-w-screen flex flex-col p-10">
       <div className="flex justify-between">
-        <HeadBanner title="Add New Food Court" subtitle={subtitle} />
+        <HeadBanner title="Add New Food Court" subtitle={adminName} />
         <AdminNavigateLinks
           navOption1="View All FCs"
           navLink1="/viewFoodCourts"
@@ -68,6 +78,7 @@ const AddNewFoodCourt = () => {
                 type="number"
                 name="fc_no"
                 id="fc_no"
+                value={fcNo}
                 onChange={(e) => {
                   setFcNo(e.target.value);
                 }}
@@ -81,6 +92,7 @@ const AddNewFoodCourt = () => {
                 type="text"
                 name="campus"
                 id="campus"
+                value={campus}
                 onChange={(e) => {
                   setCampus(e.target.value);
                 }}
@@ -94,6 +106,7 @@ const AddNewFoodCourt = () => {
                 type="text"
                 name="landmark"
                 id="landmark"
+                value={landmark}
                 onChange={(e) => {
                   setLandmark(e.target.value);
                 }}
@@ -107,6 +120,7 @@ const AddNewFoodCourt = () => {
                 type="text"
                 name="maplink"
                 id="maplink"
+                value={mapLink}
                 onChange={(e) => {
                   setMapLink(e.target.value);
                 }}
@@ -121,6 +135,7 @@ const AddNewFoodCourt = () => {
               type="text"
               name="githubLink"
               id="githubLink"
+              value={imageLink}
               onChange={(e) => {
                 setImageLink(e.target.value);
               }}
