@@ -11,10 +11,12 @@ const authRouter = require('./api/auth');
 const adminRouter = require('./api/admin');
 const fcRouter = require('./api/food_court');
 const userRouter = require('./api/user');
+const cors = require('cors');
 dotenv.config();
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.send('John Doe');
