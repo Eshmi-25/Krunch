@@ -12,6 +12,7 @@ const adminRouter = require('./api/admin');
 const fcRouter = require('./api/food_court');
 const userRouter = require('./api/user');
 const cors = require('cors');
+const mongoConnect = require('./database/mongo-connection');
 dotenv.config();
 
 const app = express();
@@ -42,4 +43,5 @@ app.listen(3000, async() => {
     await Order.sync();
     await Item.sync();
     await OrderDetails.sync();
+    mongoConnect();
 });

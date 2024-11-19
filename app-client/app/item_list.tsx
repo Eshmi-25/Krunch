@@ -30,6 +30,7 @@ export default function FoodCourtMenu() {
     { id: 15, name: "Hakka Noodles", price: "130.00", quantity: 0 },
     { id: 16, name: "Chicken Manchurian", price: "160.00", quantity: 0 },
     { id: 17, name: "Veg Manchurian", price: "140.00", quantity: 0 },
+
     { id: 18, name: "Spring Rolls", price: "90.00", quantity: 0 },
   ]);
 
@@ -39,6 +40,7 @@ export default function FoodCourtMenu() {
     campus: params.campus,
     landmark: params.landmark,
   };
+
 
   const incrementItem = (id: number) => {
     setItems(
