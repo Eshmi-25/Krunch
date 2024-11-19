@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TextInput,
-  StyleSheet,
   ScrollView,
   TouchableOpacity,
   Image,
@@ -42,7 +41,6 @@ export default function FoodCourtList() {
         }
 
         const data = await response.json();
-        console.log(data);
         setFoodCourts(data);
       } catch (err) {
         console.log(err);

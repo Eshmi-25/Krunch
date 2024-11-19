@@ -49,8 +49,8 @@ const OrderDisplayCard = ({
               key={idx}
               className="flex justify-between pr-10 items-center mt-2 "
             >
-              <div>{item[0]} </div>
-              <div>{item[1]}</div>
+              <div>{item.item_name} </div>
+              <div>{item.qty}</div>
             </div>
           ))}
         </div>

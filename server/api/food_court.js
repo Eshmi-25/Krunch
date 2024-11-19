@@ -10,6 +10,8 @@ const EReceipt = require("../database/models/order_details.model");
 const router = new express.Router();
 const ItemAvailability = require("../database/nosqlModels/itemAvailability.model");
 const Item = require("../database/models/item.model");
+const Orders = require("../database/models/order.model");
+const OrderDetails = require('../database/models/order_details.model');
 
 // Middleware to verify FC token
 const verifyFC = (req, res, next) => {
@@ -26,6 +28,59 @@ const verifyFC = (req, res, next) => {
     res.status(401).send({ message: "Invalid token" });
   }
 };
+
+router.route('/getOrders/:fc_no').get(verifyFC, async (req, res) => {
+  try {
+    const fc_no = req.params.fc_no;
+
+    if (!fc_no) {
+      return res.status(404).send({ message: "Food court ID not valid" });
+    }
+
+    // Fetch all orders for the given food court
+    const orders = await Orders.findAll({ where: { fc_no: fc_no } });
+
+    if (!orders || orders.length === 0) {
+      return res.status(200).send([]); // No orders found
+    }
+
+    // Prepare an array to hold orders with details
+    const ordersWithDetails = [];
+
+    for (const order of orders) {
+      // Fetch order details for each order
+      const orderDetails = await OrderDetails.findAll({
+        where: { order_no: order.order_no },
+      });
+
+      // Enhance each order detail with the item name
+      const enhancedOrderDetails = [];
+      for (const detail of orderDetails) {
+        const item = await Item.findOne({ where: { item_id: detail.item_id } });
+        const detailWithItemName = {
+          ...detail.dataValues, // Spread the order detail
+          item_name: item ? item.item_name : "Unknown", // Add item name or default to "Unknown"
+        };
+        enhancedOrderDetails.push(detailWithItemName);
+      }
+
+      // Append the enhanced order details to the order object
+      const orderWithDetails = {
+        ...order.dataValues, // Spread the order object
+        order_details: enhancedOrderDetails, // Add the enhanced order details
+      };
+
+      // Add to the result array
+      ordersWithDetails.push(orderWithDetails);
+    }
+
+    // Return the orders with details
+    res.status(200).send(ordersWithDetails);
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.status(500).send({ message: "Internal server error", error: error.message });
+  }
+});
 
 // Mark order as delivered
 router.route("/order/delivered/:order_id").put(verifyFC, async (req, res) => {

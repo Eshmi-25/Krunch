@@ -43,12 +43,12 @@ export default function Checkout() {
       const endTime = new Date();
       endTime.setHours(19, 0, 0, 0);
 
-      // while (startTime <= endTime) {
-      const hours = startTime.getHours().toString().padStart(2, "0");
-      const minutes = startTime.getMinutes().toString().padStart(2, "0");
-      intervals.push(`${hours}:${minutes}`);
-      startTime.setMinutes(startTime.getMinutes() + 15);
-      // }
+      while (startTime <= endTime) {
+        const hours = startTime.getHours().toString().padStart(2, "0");
+        const minutes = startTime.getMinutes().toString().padStart(2, "0");
+        intervals.push(`${hours}:${minutes}`);
+        startTime.setMinutes(startTime.getMinutes() + 15);
+      }
 
       setEtaOptions(intervals);
     };

@@ -1,12 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import OrderDisplayCard from "../../components/OrderDisplayCard";
 import NavigateLinks from "../../components/NavigateLinks";
 import HeadBanner from "../../components/HeadBanner";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const ViewOrders = () => {
+  useEffect(() => {
+    const fetchOrders = async () => {
+      const token = localStorage.getItem("token");
+      const tokenData = jwtDecode(token);
+      const email = tokenData.email;
+      const fc_no = parseInt(email.match(/fc(\d+)/)[1]);
+      setFcId(fc_no);
+      console.log(fc_no);
+
+      await axios.get(`http://localhost:3000/fc/getOrders/${fc_no}`, {
+        headers: {
+          "token": token
+        }
+      }).then((response)=>{
+        console.log(response.data)
+        setOrders(response.data);
+      }).catch((err)=>{
+        console.log(err);
+        alert("An error occurred in fetching orders");
+      })
+    };
+    fetchOrders();
+  }, []);
+
   const [fcId, setFcId] = useState(1);
-  const [subtitle, setSubtitle] = useState("Food court: " + fcId);
   const titles = [
     "name",
     "roll no",
@@ -16,39 +41,15 @@ const ViewOrders = () => {
     "e-receipt",
     "picked up",
   ];
-  const [orders, setOrders] = useState([
-    {
-      name: "Aman Chaurasia",
-      roll: "21051370",
-      orderid: "2",
-      phone: "7908967455",
-      items: [
-        ["Burger", 1],
-        ["Pizza", 2],
-        ["Chicken Chowmein", 2],
-      ],
-      receipt: "https://www.google.com",
-      picked: false,
-    },
-    {
-      name: "Annesha Mukhopadhyay",
-      roll: "2105895",
-      orderid: "6",
-      phone: "6534223490",
-      items: [
-        ["Burger", 1],
-        ["Pizza", 2],
-        ["Chicken Chowmein", 2],
-      ],
-      receipt: "https://www.google.com",
-      picked: false,
-    },
-  ]);
+  const [orders, setOrders] = useState([]);
   return (
     <div className="bg-primary min-h-screen min-w-screen flex flex-col p-10">
       <div className="flex justify-between">
-        <HeadBanner title="Know Your Orders" subtitle={subtitle} />
-        <NavigateLinks navOption="item availability" navLink="/editItemAvailability"/>
+        <HeadBanner title="Know Your Orders" subtitle={"Food court: " + fcId} />
+        <NavigateLinks
+          navOption="item availability"
+          navLink="/editItemAvailability"
+        />
       </div>
       <div className="mt-8 px-8 flex flex-col">
         <div className="grid grid-cols-7 px-8">
@@ -63,16 +64,16 @@ const ViewOrders = () => {
         </div>
         <div className="bg-accentgreen w-full h-1 mt-4"></div>
         <div className="mt-4 cabin flex flex-col gap-10">
-          {orders.map((order, idx) => (
+          {orders && orders.map((order, idx) => (
             <OrderDisplayCard
               key={idx}
-              name={order.name}
-              orderid={order.orderid}
-              roll={order.roll}
-              phone={order.phone}
-              items={order.items}
-              receipt={order.receipt}
-              picked={order.picked}
+              name={order.email}
+              orderid={order.order_no}
+              roll={order.email.split("@")[0]}
+              phone={order.phone_no}
+              items={order.order_details}
+              receipt={""}
+              picked={order.delivered}
             />
           ))}
         </div>

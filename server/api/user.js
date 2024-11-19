@@ -10,6 +10,7 @@ const FoodCourt = require('../database/models/food_court.model');
 const Item = require('../database/models/item.model');
 const ItemAvailability = require('../database/nosqlModels/itemAvailability.model');
 const { INTEGER } = require("sequelize");
+const OrderDetails = require("../database/models/order_details.model");
 
 // Middleware to verify User token
 const verifyUser = (req, res, next) => {
@@ -35,10 +36,31 @@ router.route("/placeOrder").post(verifyUser, async (req, res) => {
       const date = new Date();
       const otp = Math.floor(Math.random()*(9999-1000+1)) + 1000;
       // Add email to the order data
-      const orderData = { ...data, otp, email, date };
+      const orderData = {
+        fc_no: data.fc_no,
+        email: email,
+        phone_no: data.phone_no,
+        total_amt: data.total_amt,
+        date: date,
+        transaction_id: data.transaction_id,
+        otp: otp
+      };
   
       const order = new Order(orderData);
       await order.save();
+
+      const items = data.items;
+      console.log(typeof(items));
+      for(const item of items){
+        console.log(item)
+        const order_details = new OrderDetails({
+          order_no: order.order_no,
+          item_id: item.id,
+          amount: item.price,
+          qty: item.quantity,
+        });
+        await order_details.save();
+      }
   
       res.status(200).send({
         message: "Order placed successfully",

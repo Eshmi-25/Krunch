@@ -3,6 +3,7 @@ const connection = require('../sql-connection');
 const User = require('./user.model');
 const Orders = require('./order.model');
 const FoodCourt = require('./food_court.model');
+const Items = require('./item.model');
 
 const OrderDetails = connection.define('order_detail', {
   order_no: {
@@ -17,13 +18,13 @@ const OrderDetails = connection.define('order_detail', {
     type: DataTypes.BIGINT,
     primaryKey: true,
     references: {
-      model: FoodCourt,
-      key: 'fc_no',
+      model: Items,
+      key: 'item_id',
     },
   },
   amount: {
     type: DataTypes.FLOAT,
-    allowNull: false,
+    allowNull: true,
   },
   qty: {
     type: DataTypes.INTEGER,

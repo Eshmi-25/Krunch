@@ -2,7 +2,7 @@ import React from "react";
 import { Image, TouchableOpacity, View, Text } from "react-native";
 import { useRouter } from "expo-router";
 
-export default function Navbar() {
+export default function Navbar({ navigateToFoodCourts = false }) {
   const router = useRouter();
 
   return (
@@ -15,7 +15,15 @@ export default function Navbar() {
         paddingLeft: "2%",
       }}
     >
-      <TouchableOpacity onPress={() => router.back()}>
+      <TouchableOpacity
+        onPress={() => {
+          if (navigateToFoodCourts) {
+            router.push("/food_courts");
+          } else {
+            router.back();
+          }
+        }}
+      >
         <Image
           source={require("@/assets/images/kiit-logo.png")}
           style={{

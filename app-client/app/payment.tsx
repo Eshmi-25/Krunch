@@ -30,25 +30,27 @@ export default function Payment() {
     }
   }, [selectedItems]);
 
-  const proceedpayment = async() => {
-    const response = await fetch('http://localhost:3000/user/placeOrder', {
+  const proceedpayment = async () => {
+    const itemList = JSON.parse(selectedItems as string);
+    const response = await fetch("http://localhost:3000/user/placeOrder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         token: token || "",
       },
       body: JSON.stringify({
-        "fc_no": name,
-        "phone_no": phone,
-        "total_amt": totalAmount,
-        "transaction_id": "",
-      })
+        fc_no: name,
+        phone_no: phone,
+        total_amt: totalAmount,
+        transaction_id: "",
+        items: itemList,
+      }),
     });
-    if(!response.ok) {
+    if (!response.ok) {
       alert("Failed to place order");
       router.push({
-        pathname: "/food_courts"
-      })
+        pathname: "/food_courts",
+      });
     } else {
       alert("Order placed!");
       router.push({
@@ -68,7 +70,7 @@ export default function Payment() {
   return (
     <View id="pay_main_container">
       <View>
-        <Navbar />
+        <Navbar navigateToFoodCourts={true} />
       </View>
       <View id="pay_container">
         <View>
