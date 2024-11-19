@@ -13,34 +13,36 @@ import "@/assets/styles/FoodCourts.css";
 import "@/assets/images/QC_FC.jpg";
 import { router } from "expo-router";
 interface FoodCourt {
-  name: string;
+  fc_no: number;
   campus: string;
   landmark: string;
-  img?: string;
+  map_link: string;
+  image_link?: string;
 }
 
 export default function FoodCourtList() {
   const [searchText, setSearchText] = useState("");
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   const [foodCourts, setFoodCourts] = useState<FoodCourt[]>([]);
 
   useEffect(() => {
     const getFoodCourts = async () => {
       try {
-        const response = await fetch('http://localhost:3000/user/fetchFCs', {
-          method: 'GET',
+        const response = await fetch("http://localhost:3000/user/fetchFCs", {
+          method: "GET",
           headers: {
-            'Content-Type': 'application/json',
-            'token': token || "",
+            "Content-Type": "application/json",
+            token: token || "",
           },
         });
 
         if (!response.ok) {
-          throw new Error('Failed to fetch food courts');
+          throw new Error("Failed to fetch food courts");
         }
 
         const data = await response.json();
+        console.log(data);
         setFoodCourts(data);
       } catch (err) {
         console.log(err);
@@ -51,16 +53,18 @@ export default function FoodCourtList() {
   }, [token]);
 
   const handleFoodCourtSelect = (foodCourt: {
-    name: any;
+    fc_no: any;
     campus: any;
     landmark: any;
+    map_link: any;
   }) => {
     router.push({
       pathname: "/item_list",
       params: {
-        name: foodCourt.name,
+        name: foodCourt.fc_no,
         campus: foodCourt.campus,
         landmark: foodCourt.landmark,
+        map_link: foodCourt.map_link
       },
     });
   };
@@ -87,7 +91,7 @@ export default function FoodCourtList() {
               id="fc_card"
               onPress={() => handleFoodCourtSelect(foodCourt)}
             >
-              {foodCourt.img && (
+              {foodCourt.image_link && (
                 <Image
                   source={{
                     uri: "https://nsinha025.github.io/FC-Images/campus-15-food-court-bhubaneshwar-food-court-6kzsnjb1d1.jpg",
@@ -101,10 +105,12 @@ export default function FoodCourtList() {
                 />
               )}
               <View id="fc_cardContent">
-                <Text id="fc_cardTitle">{foodCourt.name}</Text>
+                <Text id="fc_cardTitle">Food Court: {foodCourt.fc_no}</Text>
                 <Text id="fc_cardText">{foodCourt.campus}</Text>
                 <Text id="fc_cardText">{foodCourt.landmark}</Text>
-                <Text id="fc_mapText">Map Location</Text>
+                <a href={foodCourt.map_link}>
+                  <Text id="fc_mapText">Map Location</Text>
+                </a>
               </View>
             </TouchableOpacity>
           ))}
