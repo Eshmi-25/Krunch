@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -34,13 +34,36 @@ export default function FoodCourtMenu() {
     { id: 18, name: "Spring Rolls", price: "90.00", quantity: 0 },
   ]);
 
+  useEffect(() => {
+    const fetchAvailableItems = async () => {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `http://localhost:3000/user/getAvailableItems/${selectedFoodCourt.name}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            token: token || "",
+          },
+        }
+      );
+      if (!response.ok) {
+        alert("Could not fetch items");
+      }
+      const data = await response.json();
+      console.log(data);
+      setItems(data);
+    };
+    fetchAvailableItems();
+  }, []);
+
   const params = useLocalSearchParams();
   const selectedFoodCourt = {
     name: params.name,
     campus: params.campus,
     landmark: params.landmark,
+    map_link: params.map_link,
   };
-
 
   const incrementItem = (id: number) => {
     setItems(
@@ -80,10 +103,19 @@ export default function FoodCourtMenu() {
         <Navbar />
       </View>
       <View id="IL-maincontainer">
-        <Text id="IL-foodCourtDetails">{selectedFoodCourt.name}</Text>
-        <Text>{selectedFoodCourt.campus}</Text>
+        <Text id="IL-foodCourtDetails">
+          Food Court: {selectedFoodCourt.name}
+        </Text>
+        <Text>Campus: {selectedFoodCourt.campus}</Text>
         <Text>{selectedFoodCourt.landmark}</Text>
-        <Text id="IL-mapLink">Map Link</Text>
+        {selectedFoodCourt.map_link &&
+        typeof selectedFoodCourt.map_link === "string" ? (
+          <a href={selectedFoodCourt.map_link}>
+            <Text id="IL-mapLink">Map Link</Text>
+          </a>
+        ) : (
+          <Text id="IL-mapLink">Map Link Unavailable</Text>
+        )}
         <View id="IL-searchContainer">
           <TextInput
             id="IL-searchInput"
@@ -94,36 +126,40 @@ export default function FoodCourtMenu() {
         </View>
 
         <ScrollView>
-          {items.map((item) => (
-            <View key={item.id} id="IL-itemContainer">
-              <Text id="IL-itemName">{item.name}</Text>
-              <Text id="IL-price">{item.price}</Text>
-              {item.quantity > 0 ? (
-                <View id="IL-counterContainer">
-                  <TouchableOpacity
-                    onPress={() => decrementItem(item.id)}
-                    id="IL-counterButton"
-                  >
-                    <Text id="IL-counterText">-</Text>
-                  </TouchableOpacity>
-                  <Text id="IL-quantityText">{item.quantity}</Text>
+          {items.length > 0 ? (
+            items.map((item) => (
+              <View key={item.id} id="IL-itemContainer">
+                <Text id="IL-itemName">{item.name}</Text>
+                <Text id="IL-price">{item.price}</Text>
+                {item.quantity > 0 ? (
+                  <View id="IL-counterContainer">
+                    <TouchableOpacity
+                      onPress={() => decrementItem(item.id)}
+                      id="IL-counterButton"
+                    >
+                      <Text id="IL-counterText">-</Text>
+                    </TouchableOpacity>
+                    <Text id="IL-quantityText">{item.quantity}</Text>
+                    <TouchableOpacity
+                      onPress={() => incrementItem(item.id)}
+                      id="IL-counterButton"
+                    >
+                      <Text id="IL-counterText">+</Text>
+                    </TouchableOpacity>
+                  </View>
+                ) : (
                   <TouchableOpacity
                     onPress={() => incrementItem(item.id)}
-                    id="IL-counterButton"
+                    id="IL-addButton"
                   >
-                    <Text id="IL-counterText">+</Text>
+                    <Text id="IL-addButtonText">Add</Text>
                   </TouchableOpacity>
-                </View>
-              ) : (
-                <TouchableOpacity
-                  onPress={() => incrementItem(item.id)}
-                  id="IL-addButton"
-                >
-                  <Text id="IL-addButtonText">Add</Text>
-                </TouchableOpacity>
-              )}
-            </View>
-          ))}
+                )}
+              </View>
+            ))
+          ) : (
+            <Text>No Items Available</Text>
+          )}
         </ScrollView>
 
         <TouchableOpacity id="IL-checkoutButton" onPress={handleCheckout}>

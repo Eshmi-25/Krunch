@@ -4,10 +4,12 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const User = require("../database/models/user.model");
-// const Transaction = require("../models/Transaction");
 const Order = require("../database/models/order.model");
 const EReceipt = require("../database/models/order_details.model");
 const FoodCourt = require('../database/models/food_court.model');
+const Item = require('../database/models/item.model');
+const ItemAvailability = require('../database/nosqlModels/itemAvailability.model');
+const { INTEGER } = require("sequelize");
 
 // Middleware to verify User token
 const verifyUser = (req, res, next) => {
@@ -91,6 +93,39 @@ router.route('/fetchFCs').get(verifyUser, async(req, res) => {
   } catch (error) {
     console.error("Error fetching food courts:", error);
     res.status(500).send({ message: "Internal server error" });
+  }
+});
+
+router.route('/getAvailableItems/:fc_no').get(verifyUser, async (req, res) => {
+  try {
+    console.log(req.params.fc_no);
+      const fc_no = parseInt(req.params.fc_no);
+
+      // Fetch item IDs from MongoDB
+      const fcRecord = await ItemAvailability.findOne({ fc_no });
+      if (!fcRecord || !fcRecord.item_list.length) {
+          return res.status(404).json({ message: 'No items found for the given fc_no' });
+      }
+
+      const itemIds = fcRecord.item_list;
+
+      // Fetch items from SQL using Sequelize
+      const items = await Item.findAll({
+          where: { item_id: itemIds },
+          attributes: ['item_id', 'item_name', 'price'],
+      });
+
+      const availableItems = items.map(item => ({
+          id: item.item_id,
+          name: item.item_name,
+          price: item.price.toFixed(2),
+          quantity: 0,
+      }));
+
+      res.status(200).json(availableItems);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
   }
 });
 
