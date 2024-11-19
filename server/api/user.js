@@ -33,8 +33,9 @@ router.route("/placeOrder").post(verifyUser, async (req, res) => {
       const data = req.body;
       const email = jwt.verify(req.headers["token"], process.env.JWT_SECRET).email; // Extract email from the decoded token
       const date = new Date();
+      const otp = Math.floor(Math.random()*(9999-1000+1)) + 1000;
       // Add email to the order data
-      const orderData = { ...data, email, date };
+      const orderData = { ...data, otp, email, date };
   
       const order = new Order(orderData);
       await order.save();
@@ -44,7 +45,7 @@ router.route("/placeOrder").post(verifyUser, async (req, res) => {
         order,
       });
     } catch (error) {
-      console.error("Error placing order:", error); // Log the error details
+      console.error("Error placing order:", error);
       res.status(500).send({ message: "Internal server error", error: error.message });
     }
   });
@@ -98,8 +99,9 @@ router.route('/fetchFCs').get(verifyUser, async(req, res) => {
 
 router.route('/getAvailableItems/:fc_no').get(verifyUser, async (req, res) => {
   try {
-    console.log(req.params.fc_no);
+    // console.log(req.params.fc_no);
       const fc_no = parseInt(req.params.fc_no);
+      console.log(fc_no);
 
       // Fetch item IDs from MongoDB
       const fcRecord = await ItemAvailability.findOne({ fc_no });

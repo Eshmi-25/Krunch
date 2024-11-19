@@ -5,12 +5,13 @@ import { useLocalSearchParams } from "expo-router";
 import "@/assets/styles/final_page.css";
 
 export default function OrderPlaced() {
-  const { selectedItems, eta, name, campus, landmark } = useLocalSearchParams();
+  const { selectedItems, eta, name, campus, landmark, map_link } =
+    useLocalSearchParams();
   const [items, setItems] = useState<
     { name: string; quantity: number; price: string }[]
   >([]);
   const { totalAmount } = useLocalSearchParams();
-  const [otp, setOtp] = useState<string | null>(null);
+  const [otp, setOtp] = useState<string | null>("1345");
 
   useEffect(() => {
     if (selectedItems) {
@@ -29,10 +30,16 @@ export default function OrderPlaced() {
       </View>
       <View id="fp_container">
         <View>
-          <Text id="fp_foodCourtTitle">{name}</Text>
-          <Text id="fp_foodCourtDetails">{campus}</Text>
-          <Text id="fp_foodCourtDetails">{landmark}</Text>
-          <Text id="fp_mapLink">Map Location</Text>
+          <Text id="fp_foodCourtTitle">Food Court: {name}</Text>
+          <Text id="fp_foodCourtDetails">Campus: {campus}</Text>
+          <Text id="fp_foodCourtDetails">Landmark: {landmark}</Text>
+          {typeof map_link === "string" ? (
+            <a href={map_link}>
+              <Text id="CH-mapLink">Map Location</Text>
+            </a>
+          ) : (
+            <Text>Map link not available</Text>
+          )}
         </View>
 
         <View id="fp_tableContainer">

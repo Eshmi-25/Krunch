@@ -37,8 +37,6 @@ const Orders = connection.define('orders', {
   },
   transaction_id: {
     type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
   },
   delivered: {
     type: DataTypes.TINYINT,

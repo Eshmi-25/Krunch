@@ -13,7 +13,8 @@ import "@/assets/styles/checkout.css";
 import { router, useLocalSearchParams } from "expo-router";
 
 export default function Checkout() {
-  const { selectedItems, name, campus, landmark } = useLocalSearchParams();
+  const { selectedItems, name, campus, landmark, map_link } =
+    useLocalSearchParams();
   const [items, setItems] = useState<
     { name: string; quantity: number; price: string }[]
   >([]);
@@ -82,6 +83,7 @@ export default function Checkout() {
         name,
         campus,
         landmark,
+        map_link,
       },
     });
   };
@@ -95,8 +97,13 @@ export default function Checkout() {
         <Text id="CH-foodCourtDetails">{name}</Text>
         <Text id="CH-details">Campus: {campus}</Text>
         <Text id="CH-details">Landmark: {landmark}</Text>
-        <Text id="CH-mapLink">Map Location</Text>
-
+        {typeof map_link === "string" ? (
+          <a href={map_link}>
+            <Text id="CH-mapLink">Map Location</Text>
+          </a>
+        ) : (
+          <Text>Map link not available</Text>
+        )}
         <View id="CH-tableContainer">
           <View id="CH-tableHeader">
             <Text id="CH-tableText">ITEM</Text>

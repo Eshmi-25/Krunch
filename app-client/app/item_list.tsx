@@ -93,6 +93,7 @@ export default function FoodCourtMenu() {
         name: selectedFoodCourt.name,
         campus: selectedFoodCourt.campus,
         landmark: selectedFoodCourt.landmark,
+        map_link: selectedFoodCourt.map_link,
       },
     });
   };

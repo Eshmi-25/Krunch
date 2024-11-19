@@ -11,7 +11,8 @@ import { useLocalSearchParams, router } from "expo-router";
 import "@/assets/styles/payment.css";
 
 export default function Payment() {
-  const { selectedItems, name, campus, landmark } = useLocalSearchParams();
+  const { selectedItems, name, campus, landmark, map_link } =
+    useLocalSearchParams();
   const [items, setItems] = useState<
     { name: string; quantity: number; price: string }[]
   >([]);
@@ -38,6 +39,7 @@ export default function Payment() {
         name,
         campus,
         landmark,
+        map_link,
       },
     });
   };
@@ -48,10 +50,16 @@ export default function Payment() {
       </View>
       <View id="pay_container">
         <View>
-          <Text id="pay_foodCourtDetails">{name}</Text>
-          <Text id="pay_fcinfo">{campus}</Text>
-          <Text id="pay_fcinfo">{landmark}</Text>
-          <Text id="pay_mapLink">Map Location</Text>
+          <Text id="pay_foodCourtDetails">Food Court: {name}</Text>
+          <Text id="pay_fcinfo">Campus: {campus}</Text>
+          <Text id="pay_fcinfo">Landmark: {landmark}</Text>
+          {typeof map_link === "string" ? (
+            <a href={map_link}>
+              <Text id="CH-mapLink">Map Location</Text>
+            </a>
+          ) : (
+            <Text>Map link not available</Text>
+          )}
         </View>
 
         <Text id="pay_payment_amount">To Pay: Rs. {totalAmount}</Text>
