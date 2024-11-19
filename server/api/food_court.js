@@ -9,6 +9,7 @@ const Order = require("../database/models/order.model");
 const EReceipt = require("../database/models/order_details.model");
 const router = new express.Router();
 const ItemAvailability = require("../database/nosqlModels/itemAvailability.model");
+const Item = require("../database/models/item.model");
 
 // Middleware to verify FC token
 const verifyFC = (req, res, next) => {
@@ -56,6 +57,42 @@ router.route("/order/delivered/:order_id").put(verifyFC, async (req, res) => {
       .send({ message: "Internal server error", error: error.message });
   }
 });
+
+// Get item availability for a specific food court
+router.get("/getItemAvailability/:fc_no", verifyFC, async (req, res) => {
+  try {
+    const fc_no = req.params.fc_no;
+
+    if (!fc_no) {
+      return res.status(400).send({ message: "fc_no is required." });
+    }
+
+    // Find the list of available items for the food court
+    const itemAvailability = await ItemAvailability.findOne({ fc_no });
+    console.log(itemAvailability);
+    var availableItemIds = [];
+    if(itemAvailability) {
+      availableItemIds = itemAvailability.item_list;
+    }
+    // Fetch all items (assuming a central item database)
+    console.log(availableItemIds);
+    const allItems = await Item.findAll();
+    // Map all items to include availability status
+    const itemsWithAvailability = allItems.map((item) => ({
+      id: item.item_id,
+      name: item.item_name,
+      unitPrice: item.price,
+      available: availableItemIds.includes(item.item_id),
+    }));
+
+    return res.status(200).send({ message: "Items fetched successfully.", items: itemsWithAvailability });
+  } catch (error) {
+    console.error("Error in getItemAvailability API:", error);
+    res.status(500).send({ message: "Internal server error", error: error.message });
+  }
+});
+
+module.exports = router;
 
 // Mark item availability
 router.route("/markAvailable").post(verifyFC, async (req, res) => {
