@@ -11,13 +11,14 @@ import { useLocalSearchParams, router } from "expo-router";
 import "@/assets/styles/payment.css";
 
 export default function Payment() {
-  const { selectedItems, name, campus, landmark, map_link } =
+  const { selectedItems, name, campus, landmark, map_link, phone } =
     useLocalSearchParams();
   const [items, setItems] = useState<
     { name: string; quantity: number; price: string }[]
   >([]);
   const { totalAmount } = useLocalSearchParams();
   const { eta } = useLocalSearchParams();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (selectedItems) {
@@ -29,19 +30,40 @@ export default function Payment() {
     }
   }, [selectedItems]);
 
-  const proceedpayment = () => {
-    router.push({
-      pathname: "/final_page",
-      params: {
-        selectedItems: JSON.stringify(items),
-        totalAmount: totalAmount,
-        eta: eta,
-        name,
-        campus,
-        landmark,
-        map_link,
+  const proceedpayment = async() => {
+    const response = await fetch('http://localhost:3000/user/placeOrder', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        token: token || "",
       },
+      body: JSON.stringify({
+        "fc_no": name,
+        "phone_no": phone,
+        "total_amt": totalAmount,
+        "transaction_id": "",
+      })
     });
+    if(!response.ok) {
+      alert("Failed to place order");
+      router.push({
+        pathname: "/food_courts"
+      })
+    } else {
+      alert("Order placed!");
+      router.push({
+        pathname: "/final_page",
+        params: {
+          selectedItems: JSON.stringify(items),
+          totalAmount: totalAmount,
+          eta: eta,
+          name,
+          campus,
+          landmark,
+          map_link,
+        },
+      });
+    }
   };
   return (
     <View id="pay_main_container">

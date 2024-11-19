@@ -21,6 +21,7 @@ export default function Checkout() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [etaOptions, setEtaOptions] = useState<string[]>([]);
   const [selectedEta, setSelectedEta] = useState<string>("");
+  const [phone, setPhone] = useState<number>(0);
 
   useEffect(() => {
     if (selectedItems) {
@@ -84,6 +85,7 @@ export default function Checkout() {
         campus,
         landmark,
         map_link,
+        phone,
       },
     });
   };
@@ -94,7 +96,7 @@ export default function Checkout() {
         <Navbar />
       </View>
       <View id="CH-container">
-        <Text id="CH-foodCourtDetails">{name}</Text>
+        <Text id="CH-foodCourtDetails">Food Court: {name}</Text>
         <Text id="CH-details">Campus: {campus}</Text>
         <Text id="CH-details">Landmark: {landmark}</Text>
         {typeof map_link === "string" ? (
@@ -130,6 +132,11 @@ export default function Checkout() {
           id="CH-phoneInput"
           placeholder="Phone Number"
           keyboardType="numeric"
+          onChangeText={(newText) => {
+            const sanitizedText = newText.replace(/[^0-9]/g, "");
+            setPhone(parseInt(sanitizedText));
+          }}
+          maxLength={10} // Limit input to 10 characters
         />
 
         <TouchableOpacity
